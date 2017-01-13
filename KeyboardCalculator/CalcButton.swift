@@ -42,7 +42,6 @@ class CalcButton: UIButton {
         super.init(coder: aDecoder)
         
         let name: String = self.title(for: .normal)!
-        print("name \(name)")
         let type: CalcButtonType = CalcButtonType(rawValue: name)!
         
         switch type { // set the appropriate background based on the kind of button
