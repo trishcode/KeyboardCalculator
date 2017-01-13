@@ -85,7 +85,7 @@ struct CalcState : CustomStringConvertible {
             mode = .equals
         case (.equals, .entry):
             print("equal to entry")
-            calcStack = CalcStack()
+            clearState = .allClear
             mode = .entry
         case (.operate, .entry):
             print("operate to entry")
@@ -117,21 +117,24 @@ struct CalcState : CustomStringConvertible {
     }
     
     mutating func enterDigit(_ digit: UInt) {
+        clearState = .clear
         toMode(.entry)
         display.appendDigit(digit)
     }
         
     mutating func enterDecimal() {
+        clearState = .clear
         toMode(.entry)
         display.fraction = true
     }
     
-    mutating func clearButtonPress() {
+    mutating func clear() {
         display.reset()
-        if clearState == .clear {
+        switch clearState {
+        case .clear:
             calcStack.popValueStack()
             clearState = .allClear
-        } else if clearState == .allClear {
+        case .allClear:
             display = CalcDisplay()
             calcStack = CalcStack()
             mode = .entry
@@ -139,10 +142,10 @@ struct CalcState : CustomStringConvertible {
         }
     }
     
-    //This is the decision to compute.  Not sure where it goes.
     mutating func computeDecision() {
         //print("compute decision value stack count \(calcStack.valueArray.count)")
         //print("compute decision operator stack count \(calcStack.operatorArray.count)")
+        
         //if operatorArray.last == (+) || (-) && currentOperatorEntry == (*) || (/) {
         //    return
         //}

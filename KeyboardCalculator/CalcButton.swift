@@ -6,16 +6,13 @@
 //  Copyright © 2017 TrishCode. All rights reserved.
 //
 
-import UIKit
-
 enum CalcButtonType : String {
     case Plus = "+"
-    case Minus = "-"
+    case Minus = "−"
     case Divide = "÷"
-    case Multiply = "x"
+    case Multiply = "×"
     case Equal = "="
     case Decimal = "."
-    case Clear = "AC"
     case SwapSign = "±"
     case Percent = "%"
     case Num0 = "0"
@@ -30,7 +27,11 @@ enum CalcButtonType : String {
     case Num9 = "9"
 }
 
+import UIKit
+
 class CalcButton: UIButton {
+    
+    let calcButtonType: CalcButtonType
     
     //Declare the normal and highlighted background color variables
     var normalBGC = UIColor()
@@ -41,8 +42,8 @@ class CalcButton: UIButton {
         
         super.init(coder: aDecoder)
         
-        let name: String = self.title(for: .normal)!
-        let type: CalcButtonType = CalcButtonType(rawValue: name)!
+        let name = calcButtonType
+        let type = CalcButtonType(rawValue: name)!
         
         switch type { // set the appropriate background based on the kind of button
         case .Plus, .Multiply, .Minus, .Divide, .Equal:
@@ -50,12 +51,12 @@ class CalcButton: UIButton {
             highlightedBGC = UIColor(red: 190/255, green: 112/255, blue: 0/255, alpha: 1)
             backgroundColor = normalBGC
             setTitleColor(UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1), for: .highlighted)
-        case .Clear, .SwapSign, .Percent:
-            normalBGC = UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 1)
+        case .Num0, .Num1, .Num2, .Num3, .Num4, .Num5, .Num6, .Num7, .Num8, .Num9, .Decimal:
+            normalBGC = UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 1)
             highlightedBGC = UIColor(red: 166/255, green: 166/255, blue: 166/255, alpha: 1)
             backgroundColor = normalBGC
         default:
-            normalBGC = UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 1)
+            normalBGC = UIColor(red: 186/255, green: 186/255, blue: 186/255, alpha: 1)
             highlightedBGC = UIColor(red: 166/255, green: 166/255, blue: 166/255, alpha: 1)
             backgroundColor = normalBGC
         }

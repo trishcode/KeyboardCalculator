@@ -15,12 +15,22 @@ class ViewController: UIViewController {
     var keyPressArray = [keyPress]()
 
     //Display label outlet
-    @IBOutlet var DisplayLabel: UILabel!
+    @IBOutlet var displayLabel: DisplayView!
     
-    //The flash method "flashes" the UILabel by making it transparent for a short delay.
-    func flash() {
-        self.DisplayLabel.alpha = 0.0;
-        UIView.animate(withDuration: 0.1, animations: {self.DisplayLabel.alpha = 1.0})
+    func updateClearButtonTitle() {
+        var title: String {
+            switch calc.clearState {
+            case .clear:
+                return "C"
+            case .allClear:
+                return "AC"
+            }
+        }
+        clearButton.setTitle(title, for: .normal)
+    }
+
+    func updateDisplayLabel() {
+       displayLabel.text = calc.description
     }
     
     //UI button outlets
@@ -43,15 +53,7 @@ class ViewController: UIViewController {
     @IBOutlet var clearButton: CalcButton!
     @IBOutlet var percentageButton: CalcButton!
     @IBOutlet var signButton: CalcButton!
-
-    var clearButtonText: String {
-        switch calc.clearState {
-        case .clear:
-            return "C"
-        case .allClear:
-            return "AC"
-        }
-    }
+    
     
     @IBAction func press(_ button: CalcButton) {
         
@@ -69,22 +71,23 @@ class ViewController: UIViewController {
         case .Num7: calc.enterDigit(7)
         case .Num8: calc.enterDigit(8)
         case .Num9: calc.enterDigit(9)
-        case .Minus: calc.enterOperation(op: -); flash()
-        case .Plus: calc.enterOperation(op: +); flash()
-        case .Divide: calc.enterOperation(op: /); flash()
-        case .Multiply: calc.enterOperation(op: *); flash()
-        case .SwapSign: calc.enterOperation(op: *, value: -1.0); flash()
+        case .Minus: calc.enterOperation(op: -); displayLabel.flash()
+        case .Plus: calc.enterOperation(op: +); displayLabel.flash()
+        case .Divide: calc.enterOperation(op: /); displayLabel.flash()
+        case .Multiply: calc.enterOperation(op: *); displayLabel.flash()
+        case .SwapSign: calc.enterOperation(op: *, value: -1.0); displayLabel.flash()
         case .Percent: calc.enterOperation(op: /, value: 100)
         case .Equal: calc.equalsButtonPressed()
         case .Decimal: calc.enterDecimal()
-        case .Clear: calc.clearButtonPress()
+        default: return
         }
 
-        calc.clearState = .clear   //tmr - why is this here?  need to straghten out everything with the clear button.  Should it be a mode?
-        DisplayLabel.text = calc.description
-        clearButton.setTitle(clearButtonText, for: .normal)
-        //print("valueArray \(calc.calcStack.valueArray[0])")
-        //print("operatorArray \(calc.calcStack.operatorArray[0])")
+        updateDisplayLabel()
+        updateClearButtonTitle()
+    }
+    
+    @IBAction func clearButtonPress(_ sender: CalcButton) {
+        calc.clear()
     }
     
     override func viewDidLoad() {
