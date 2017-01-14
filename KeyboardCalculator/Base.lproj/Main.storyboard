@@ -239,7 +239,6 @@
                                 </state>
                                 <connections>
                                     <action selector="clearButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Oxc-QC-ueq"/>
-                                    <action selector="press:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hHc-qE-dFS"/>
                                 </connections>
                             </button>
                         </subviews>

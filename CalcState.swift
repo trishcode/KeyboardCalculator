@@ -46,8 +46,7 @@ struct CalcState : CustomStringConvertible {
             mode = .entry
         case (.entry, .operate(let op)):
             print("entry to operate")
-            calcStack.postValueStack(display.decimalValue)
-            display.reset()
+            moveValueToStack(display.decimalValue)
             //OPTIONAL:  If the value stack.count and op stack.count are equal and not zero, pop the last operator off the stack.  This covers the case if an operator was hit before a value.
             computeDecision()
             calcStack.postOperatorStack(op)
@@ -62,8 +61,7 @@ struct CalcState : CustomStringConvertible {
             mode = .operate(op)
         case (.entry, .equals):
             print("entry to equal")
-            calcStack.postValueStack(display.decimalValue)
-            display.reset()
+            moveValueToStack(display.decimalValue)
             //Account for case 2+=
             if calcStack.valueArray.count == 1 && calcStack.operatorArray.count == 1 {
                 calcStack.postValueStack(calcStack.lastEntry)
@@ -99,6 +97,10 @@ struct CalcState : CustomStringConvertible {
         }
     }
     
+    //.entry -> .clear -->  don't pop the value stack
+    //.equal -> .clear -->  pop the value stack
+    //.clear -> .clear -->  allClear
+    
     mutating func enterOperation(op: @escaping CalcOp, value: Double? = nil) {
         calcStack.lastOperater = op
         
@@ -128,18 +130,24 @@ struct CalcState : CustomStringConvertible {
         display.fraction = true
     }
     
-    mutating func clear() {
+    mutating func clearDisplay() {
         display.reset()
         switch clearState {
         case .clear:
-            calcStack.popValueStack()
+            //calcStack.popValueStack()
             clearState = .allClear
-        case .allClear:
-            display = CalcDisplay()
-            calcStack = CalcStack()
             mode = .entry
-            print("to entry due to clear")
+            print("clear ran")
+        case .allClear:
+            calcStack = CalcStack()
+            print("all clear ran")
         }
+    }
+    
+    mutating func moveValueToStack(_ value: Double) {
+        calcStack.postValueStack(value)
+        calcStack.lastEntry = value
+        display.reset()
     }
     
     mutating func computeDecision() {

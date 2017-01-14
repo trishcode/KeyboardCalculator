@@ -6,11 +6,14 @@
 //  Copyright © 2017 TrishCode. All rights reserved.
 //
 
+
+import UIKit
+
 enum CalcButtonType : String {
     case Plus = "+"
-    case Minus = "−"
+    case Minus = "-"
     case Divide = "÷"
-    case Multiply = "×"
+    case Multiply = "x"
     case Equal = "="
     case Decimal = "."
     case SwapSign = "±"
@@ -25,13 +28,10 @@ enum CalcButtonType : String {
     case Num7 = "7"
     case Num8 = "8"
     case Num9 = "9"
+    case Clear = "AC"
 }
 
-import UIKit
-
 class CalcButton: UIButton {
-    
-    let calcButtonType: CalcButtonType
     
     //Declare the normal and highlighted background color variables
     var normalBGC = UIColor()
@@ -42,7 +42,7 @@ class CalcButton: UIButton {
         
         super.init(coder: aDecoder)
         
-        let name = calcButtonType
+        let name: String = self.title(for: .normal)!
         let type = CalcButtonType(rawValue: name)!
         
         switch type { // set the appropriate background based on the kind of button

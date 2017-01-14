@@ -87,7 +87,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func clearButtonPress(_ sender: CalcButton) {
-        calc.clear()
+        calc.clearDisplay()
+        updateDisplayLabel()
+        updateClearButtonTitle()
     }
     
     override func viewDidLoad() {
