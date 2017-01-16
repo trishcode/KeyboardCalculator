@@ -8,18 +8,11 @@
 
 import Foundation
 
-typealias CalcOp = (Double, Double) -> Double
-
-//tmr - use something like this for safety checks?
-/*
-extension Stack {
-    var topItem: Element? {
-        return items.isEmpty ? nil : items[items.count - 1]
-    }
-} */
-
-struct newType: CalcOp, Equatable {
-    
+enum CalcOp {
+    case add
+    case subtract
+    case multiply
+    case divide
 }
 
 enum CalcMode {
@@ -34,46 +27,38 @@ enum ClearState {
     case allClear
 }
 
-enum operatorState {
-    case add
-    case mult
-}
-
 struct CalcState : CustomStringConvertible {
     
     var mode: CalcMode = .entry
     var display: CalcDisplay = CalcDisplay()
     var calcStack: CalcStack = CalcStack()
     var clearState: ClearState = .allClear
-    //var operatorState: OperatorState = .add   //TMR - garbage
+    
+    var lastEntry: Double?
+    var lastOperator: CalcOp?
     
     var description: String {
         switch mode {
         case .entry:
             return display.description
-        case .operate:
-            return String(format: "%g", calcStack.valueArray.last!)  //TMR - unwrap this in the future
+        case .operate:   //tmr - put the below statements into a function after you've stopped crashing
+            if let value = calcStack.valueArray.last {
+                return String(format: "%g", value)
+            } else {
+                print("calcState.description.operate failed")
+                return "0"
+            }
         case .equals:
-            return String(format: "%g", calcStack.valueArray.last!)  //TMR - unwrap this in the future
+            if let value = calcStack.valueArray.last {
+                return String(format: "%g", value)
+            } else {
+                print("calcState.description.equals failed")
+                return "0"
+            }
         case .clear:
             return display.description
         }
     }
-    
-    /*
-    mutating func addToMult(_ newmode: CalcOp) -> Bool {
-        switch (operatorState, newmode) {
-        case (.add .add):
-            return false
-        case (.add, .mult):
-            return true
-        case (.mult, .add):
-            return false
-        case (.mult, .mult):
-            return false
-        }
-        operatorState = newmode
-    }  */
     
     mutating func toMode(_ newmode: CalcMode) {
         switch (mode, newmode) {
@@ -97,20 +82,24 @@ struct CalcState : CustomStringConvertible {
             moveValueToStack(display.decimalValue)
             //Account for case 2+=
             if calcStack.valueArray.count == 1 && calcStack.operatorArray.count == 1 {
-                calcStack.postValueStack(calcStack.lastEntry)
-                computeDecision()
+                if let value = lastEntry {
+                    calcStack.postValueStack(value)
+                    computeDecision()
+                }
             }
         case (.equals, .equals):
             print("equal to equal")
             if !calcStack.valueArray.isEmpty {
-                //if calcStack.lastEntry != nil, calcStack.lastOperator != nil {
-                    calcStack.postValueStack(calcStack.lastEntry)
-                    calcStack.postOperatorStack(calcStack.lastOperater)
-                //}
+                if lastEntry != nil, lastOperator != nil {
+                    calcStack.postValueStack(lastEntry!)
+                    calcStack.postOperatorStack(lastOperator!)
+                }
             }
         case (.operate, .equals):
             print("operate to equal")
-            calcStack.postValueStack(calcStack.lastEntry)
+            if let value = lastEntry {
+                calcStack.postValueStack(value)
+            }
         case (.equals, .entry):
             print("equal to entry")
             display.reset()
@@ -148,17 +137,8 @@ struct CalcState : CustomStringConvertible {
     }
     
     
-    //Using type alias.  It's just an alias.
-    
-    mutating func enterOperation(op: @escaping CalcOp) {  //, string: String) {
-        //if operation = "+" {   //TMR - garbage
-        //
-        //}
-        if op == (-) {
-            //this should work.  Do I need special characters?
-        }
-        calcStack.lastOperater = op
-        //addToMult(op)             //TMR - garbage
+    mutating func enterOperation(op: CalcOp) {
+        lastOperator = op
         toMode(.operate(op))
     }
     
@@ -185,11 +165,11 @@ struct CalcState : CustomStringConvertible {
         case .entry:
             display.toggleSign()
         case .equals:
-            modifyStackTopValue(multiplier: -1)
+            calcStack.modifyTopValue(multiplier: -1)
         case .clear:
             display.toggleSign()
         case .operate:
-            modifyStackTopValue(multiplier: -1)
+            calcStack.modifyTopValue(multiplier: -1)
         }
     }
     
@@ -199,18 +179,12 @@ struct CalcState : CustomStringConvertible {
         case .entry:
             display.percentage()
         case .equals:
-            modifyStackTopValue(multiplier: 0.01)
+            calcStack.modifyTopValue(multiplier: 0.01)
         case .clear:
             display.percentage()
         case .operate:
-            modifyStackTopValue(multiplier: 0.01)
+            calcStack.modifyTopValue(multiplier: 0.01)
         }
-    }
-    
-    mutating func modifyStackTopValue(multiplier: Double) {
-        let value = calcStack.valueArray.last! * multiplier  //tmr - unwrap
-        calcStack.popValueStack()
-        calcStack.postValueStack(value)
     }
     
     mutating func clearDisplay() {
@@ -220,7 +194,7 @@ struct CalcState : CustomStringConvertible {
     
     mutating func moveValueToStack(_ value: Double) {
         calcStack.postValueStack(value)
-        calcStack.lastEntry = value
+        lastEntry = value
         display.reset()
     }
     
@@ -228,21 +202,11 @@ struct CalcState : CustomStringConvertible {
         //print("compute decision value stack count \(calcStack.valueArray.count)")
         //print("compute decision operator stack count \(calcStack.operatorArray.count)")
         
-        //For operator precedence
-        let plusCalcOp: CalcOp = (+)
-        let minusCalcOp: CalcOp = (-)
-        let multiplyCalcOp: CalcOp = (*)
-        let divideCalcOp: CalcOp = (/)
-        
-        //if operatorArray.last == plusCalcOp || (-) {//&& currentOperatorEntry == (*) || (/) {
-        let value = calcStack.operatorArray.last!  //tmr - need to unwrap
-    
-        
-        //if value === plusCalcOp {//|| minusCalcOp && calcStack.lastEntry == multiplyCalcOp || divideCalcOp {
-        //isEqual(value, plusCalcOp)
-        
-        //    return
-        //}
+        if let value = calcStack.operatorArray.last {
+            if (value == .add || value == .subtract) && (lastOperator == .multiply || lastOperator == .divide) {
+                return
+            }
+        }
         while calcStack.valueArray.count >= 2 {
             compute()
         }
@@ -256,44 +220,20 @@ struct CalcState : CustomStringConvertible {
         calcStack.popValueStack()
         let operatorTerm = calcStack.operatorArray.last
         calcStack.popOperatorStack()
-        
-        /*
-        //Perform the calculation and add the result to the value stack
-        if let rt = rightTerm, let lt = leftTerm, let op = operatorTerm {
-            let result = op(lt,rt)
-            calcStack.valueArray.append(result)
-        } */
+        let result: Double
         
         if let rt = rightTerm, let lt = leftTerm, let op = operatorTerm {
             switch op {
-            case .add: return lt + rt
-            case .subtract: return lt - rt
-            case .multiply: return lt * rt
-            case .divide: return lt / rt   //tmr - what about divide by zero?
+            case .add: result = lt + rt
+            case .subtract: result = lt - rt
+            case .multiply: result = lt * rt
+            case .divide: result = lt / rt
+            }
+            calcStack.valueArray.append(result)
         }
-    }
-    
-    enum Operation {
-        case add
-        case subtract
-        case multiply
-        case divide
-    }
-    
-    func Calculation(lt: Double, op: Operation, rt: Double) -> Double {
-        
-        switch op {
-        case .add: return lt + rt
-        case .subtract: return lt - rt
-        case .multiply: return lt * rt
-        case .divide: return lt / rt   //tmr - what about divide by zero?
-        }
-        
     }
     
 }
-
-
 
 
 

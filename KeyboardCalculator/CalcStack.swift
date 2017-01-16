@@ -10,31 +10,35 @@ import Foundation
 
 struct CalcStack {
     
-    //big number divided by 6 killed it.
-    //need to do the math precedence.  It's in here, but commented out.
-    
     var valueArray: [Double] = []
     var operatorArray: [CalcOp] = []
-    var lastEntry: Double = 0
-    var lastOperater: CalcOp = (+)
-    var lastOpAsString: String = ""
     
     mutating func postValueStack(_ value: Double) {
         valueArray.append(value)
     }
     
-    mutating func postOperatorStack(_ op: @escaping CalcOp) {
+    mutating func postOperatorStack(_ op: CalcOp) {
         operatorArray.append(op)
     }
     
     mutating func popValueStack() {
-        //valueArray.remove(at: valueArray.endIndex-1)
-        valueArray.removeLast()
+        if valueArray.count != 0 {
+            valueArray.removeLast()
+        }
     }
     
     mutating func popOperatorStack() {
-        //_ = operatorArray.remove(at: operatorArray.endIndex-1)
-        _ = operatorArray.removeLast()
+        if operatorArray.count != 0 {
+            _ = operatorArray.removeLast()
+        }
+    }
+    
+    mutating func modifyTopValue(multiplier: Double) {
+        if var value = valueArray.last {
+            value = value * multiplier
+            popValueStack()
+            postValueStack(value)
+        }
     }
     
 }

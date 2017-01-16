@@ -71,13 +71,13 @@ class ViewController: UIViewController {
         case .Num7: calc.enterDigit(7)
         case .Num8: calc.enterDigit(8)
         case .Num9: calc.enterDigit(9)
-        case .Minus: calc.enterOperation(op: -); displayLabel.flash()
-        case .Plus: calc.enterOperation(op: +); displayLabel.flash()
-        case .Divide: calc.enterOperation(op: /); displayLabel.flash()
-        case .Multiply: calc.enterOperation(op: *); displayLabel.flash()
+        case .Minus: calc.enterOperation(op: .subtract); displayLabel.flash()
+        case .Plus: calc.enterOperation(op: .add); displayLabel.flash()
+        case .Divide: calc.enterOperation(op: .divide); displayLabel.flash()
+        case .Multiply: calc.enterOperation(op: .multiply); displayLabel.flash()
         case .SwapSign: calc.swapSign(); displayLabel.flash()
-        case .Percent: calc.percentage()
-        case .Equal: calc.enterEqual()
+        case .Percent: calc.percentage(); displayLabel.flash()
+        case .Equal: calc.enterEqual(); displayLabel.flash()
         case .Decimal: calc.enterDecimal()
         default: return
         }
@@ -99,10 +99,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var test: Test = (+)
 
-        
         //Load array for keyboard commands.
         keyPressArray = [
             keyPress(input: "1", title: "number 1", button: oneButton),
@@ -156,10 +153,19 @@ class ViewController: UIViewController {
 }
 
 
+//To do
+//4*6*=  gives me 144, and it's 576 on other calculators.
+//Test 5 failed.  I might be ok with this answer.  Other calculators have an answer of 24 until the equals button is hit.  I can look at my stacks during all this.
+//2+4*/ isn't working.  The divide should just replace the multiply, but it doesn't.  How am I handling two operators in a row?
+//big number divided by 6 fails.
+//2+3+=   I get 8, and most calculators get 10.
+
+//Try formatting in CalcDisplay.  Formatting in CalcState.description, too. (Can you control when the exp comes into play?)
+//Deal with optional criterium in the entry to operate case
+//What about the structure?  Does it make sense?
+//See if you should put ads back in
 
 
-
-//TMR - what's up with the mutating and escaping?
 
 //COMPUTE
 //If the last operator in the stack is + or - and the current operator is * or /, do not compute.
@@ -240,20 +246,6 @@ class ViewController: UIViewController {
 //*     Two ops in a row, pop last value off operator stack.  Put this value on operator stack.
 //7     Set to current entry
 //+     {Answer is 23.}  Put current entry on value stack.  Compute if you can.  Put this operator on the operator stack.
-
-//2     create calc instance.  Set current entry to this value.
-//+     Put current entry on value stack.  Compute if you can.  Put this operator on the operator stack.
-//3     Set to current entry
-//*     Put current entry on value stack.  Compute if you can.  Put this operator on the operator stack after the compute is done!
-//4     Set to current entry
-//=     {Answer is 13.}  Put current entry on value stack.  Compute.
-
-//2     create calc instance.  Set current entry to this value.
-//+     Put current entry on value stack.  Compute if you can.  Put this operator on the operator stack.
-//3     Set to current entry
-//*     Put current entry on value stack.  Compute if you can.  Put this operator on the operator stack after the compute is done!
-//4     Set to current entry
-//+     Put current entry on value stack.  Compute if you can.  Put this operator on the operator stack after the compute is done!
 
 
 
