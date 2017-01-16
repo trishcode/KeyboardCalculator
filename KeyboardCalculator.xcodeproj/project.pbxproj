@@ -20,6 +20,7 @@
 		25D6C8501E2846E2001D3C91 /* CalcState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D6C84F1E2846E2001D3C91 /* CalcState.swift */; };
 		25D6C8521E284F12001D3C91 /* CalcStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D6C8511E284F12001D3C91 /* CalcStack.swift */; };
 		25D744C21E294BAD008A5608 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D744C11E294BAD008A5608 /* DisplayView.swift */; };
+		25D744C41E2D40B7008A5608 /* Calc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D744C31E2D40B7008A5608 /* Calc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		25D6C84F1E2846E2001D3C91 /* CalcState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalcState.swift; path = ../CalcState.swift; sourceTree = "<group>"; };
 		25D6C8511E284F12001D3C91 /* CalcStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcStack.swift; sourceTree = "<group>"; };
 		25D744C11E294BAD008A5608 /* DisplayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
+		25D744C31E2D40B7008A5608 /* Calc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				25D6C84D1E26D3E9001D3C91 /* KeyboardCommand.swift */,
 				259F3DA61E2560EF00C50FAC /* CalcButton.swift */,
 				25D6C84F1E2846E2001D3C91 /* CalcState.swift */,
+				25D744C31E2D40B7008A5608 /* Calc.swift */,
 				25D6C8511E284F12001D3C91 /* CalcStack.swift */,
 				259F3DA21E255FD600C50FAC /* CalcDisplay.swift */,
 				259F3D781E255F8600C50FAC /* Main.storyboard */,
@@ -279,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25D6C84E1E26D3E9001D3C91 /* KeyboardCommand.swift in Sources */,
+				25D744C41E2D40B7008A5608 /* Calc.swift in Sources */,
 				259F3DA71E2560EF00C50FAC /* CalcButton.swift in Sources */,
 				259F3D771E255F8600C50FAC /* ViewController.swift in Sources */,
 				25D6C8521E284F12001D3C91 /* CalcStack.swift in Sources */,

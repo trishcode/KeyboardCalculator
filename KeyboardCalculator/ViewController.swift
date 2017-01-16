@@ -75,9 +75,9 @@ class ViewController: UIViewController {
         case .Plus: calc.enterOperation(op: +); displayLabel.flash()
         case .Divide: calc.enterOperation(op: /); displayLabel.flash()
         case .Multiply: calc.enterOperation(op: *); displayLabel.flash()
-        case .SwapSign: calc.enterOperation(op: *, value: -1.0); displayLabel.flash()
-        case .Percent: calc.enterOperation(op: /, value: 100)
-        case .Equal: calc.equalsButtonPressed()
+        case .SwapSign: calc.swapSign(); displayLabel.flash()
+        case .Percent: calc.percentage()
+        case .Equal: calc.enterEqual()
         case .Decimal: calc.enterDecimal()
         default: return
         }
@@ -92,8 +92,16 @@ class ViewController: UIViewController {
         updateClearButtonTitle()
     }
     
+    struct Test {
+        var calc: (Double, Double) -> Double
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var test: Test = (+)
+
         
         //Load array for keyboard commands.
         keyPressArray = [
@@ -147,28 +155,9 @@ class ViewController: UIViewController {
     
 }
 
-//
-//  CalcMode.swift
-//  KeyboardCalculator
-//
-//  Created by Tricia Rudloff on 1/10/17.
-//  Copyright © 2017 TrishCode. All rights reserved.
-//
-
-import Foundation
 
 
 
-//decide if you want to compute.
-
-//When I hit, say, an operator button from the screen, the VC will know about that.  I will essentially run a method
-
-//Things to do:
-//Get the simple calc so it works like the git example, with the operator as a calcOp.
-//Set up the arrays.
-//Set up the functions within the CalcStruct for the buttons to call when they're pressed.
-//Set up the methods for +/- and %
-//Set up the conditioning for the calcDisplay.
 
 //TMR - what's up with the mutating and escaping?
 

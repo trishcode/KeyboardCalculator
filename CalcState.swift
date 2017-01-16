@@ -7,18 +7,36 @@
 //
 
 import Foundation
+
+typealias CalcOp = (Double, Double) -> Double
+
+//tmr - use something like this for safety checks?
+/*
+extension Stack {
+    var topItem: Element? {
+        return items.isEmpty ? nil : items[items.count - 1]
+    }
+} */
+
+struct newType: CalcOp, Equatable {
     
-typealias CalcOp = (Double, Double)->Double
+}
 
 enum CalcMode {
     case entry
     case operate(CalcOp)
     case equals
+    case clear
 }
 
 enum ClearState {
     case clear
     case allClear
+}
+
+enum operatorState {
+    case add
+    case mult
 }
 
 struct CalcState : CustomStringConvertible {
@@ -27,6 +45,7 @@ struct CalcState : CustomStringConvertible {
     var display: CalcDisplay = CalcDisplay()
     var calcStack: CalcStack = CalcStack()
     var clearState: ClearState = .allClear
+    //var operatorState: OperatorState = .add   //TMR - garbage
     
     var description: String {
         switch mode {
@@ -36,21 +55,36 @@ struct CalcState : CustomStringConvertible {
             return String(format: "%g", calcStack.valueArray.last!)  //TMR - unwrap this in the future
         case .equals:
             return String(format: "%g", calcStack.valueArray.last!)  //TMR - unwrap this in the future
+        case .clear:
+            return display.description
         }
     }
-        
+    
+    /*
+    mutating func addToMult(_ newmode: CalcOp) -> Bool {
+        switch (operatorState, newmode) {
+        case (.add .add):
+            return false
+        case (.add, .mult):
+            return true
+        case (.mult, .add):
+            return false
+        case (.mult, .mult):
+            return false
+        }
+        operatorState = newmode
+    }  */
+    
     mutating func toMode(_ newmode: CalcMode) {
         switch (mode, newmode) {
         case (.entry, .entry):
             print("entry to entry")
-            mode = .entry
         case (.entry, .operate(let op)):
             print("entry to operate")
             moveValueToStack(display.decimalValue)
             //OPTIONAL:  If the value stack.count and op stack.count are equal and not zero, pop the last operator off the stack.  This covers the case if an operator was hit before a value.
             computeDecision()
             calcStack.postOperatorStack(op)
-            mode = .operate(op)
         case (.operate, .operate(let op)):
             print("operate to operate")
             if !calcStack.operatorArray.isEmpty {
@@ -58,7 +92,6 @@ struct CalcState : CustomStringConvertible {
             }
             calcStack.postOperatorStack(op)
             computeDecision()
-            mode = .operate(op)
         case (.entry, .equals):
             print("entry to equal")
             moveValueToStack(display.decimalValue)
@@ -67,7 +100,6 @@ struct CalcState : CustomStringConvertible {
                 calcStack.postValueStack(calcStack.lastEntry)
                 computeDecision()
             }
-            mode = .equals
         case (.equals, .equals):
             print("equal to equal")
             if !calcStack.valueArray.isEmpty {
@@ -76,44 +108,61 @@ struct CalcState : CustomStringConvertible {
                     calcStack.postOperatorStack(calcStack.lastOperater)
                 //}
             }
-            mode = .equals
         case (.operate, .equals):
             print("operate to equal")
             calcStack.postValueStack(calcStack.lastEntry)
-            mode = .equals
         case (.equals, .entry):
             print("equal to entry")
-            clearState = .allClear
-            mode = .entry
+            display.reset()
+            calcStack.popValueStack()
         case (.operate, .entry):
             print("operate to entry")
-            mode = .entry
-            return
-        case (.equals, .operate(let op)):
+        case (.equals, .operate):
             print("equal to operate")
             //not sure what this should do
-            mode = .operate(op)
-            return
+        case (.entry, .clear):
+            print("entry to clear")
+            display.reset()
+            clearState = .allClear
+        case (.operate, .clear):
+            print("operate to clear")
+            display.reset()
+            clearState = .allClear
+        case (.equals, .clear):
+            print("equal to clear")
+            display.reset()
+            calcStack.popValueStack()
+            clearState = .allClear
+        case (.clear, .clear):
+            print("clear to clear")
+            display.reset()
+            calcStack = CalcStack()
+        case (.clear, .entry):
+            print("clear to entry")
+        case (.clear, .operate):
+            print("clear to operate")
+        case (.clear, .equals):
+            print("clear to equal")
         }
+        mode = newmode
     }
     
-    //.entry -> .clear -->  don't pop the value stack
-    //.equal -> .clear -->  pop the value stack
-    //.clear -> .clear -->  allClear
     
-    mutating func enterOperation(op: @escaping CalcOp, value: Double? = nil) {
+    //Using type alias.  It's just an alias.
+    
+    mutating func enterOperation(op: @escaping CalcOp) {  //, string: String) {
+        //if operation = "+" {   //TMR - garbage
+        //
+        //}
+        if op == (-) {
+            //this should work.  Do I need special characters?
+        }
         calcStack.lastOperater = op
-        
-        if let value = value {      //tmr - this part handles the +/- and %
-            //toMode(.result(op))
-            //calc.push(op, value: value)
-        } else {
-            //toMode(.result(op))
-            toMode(.operate(op))
-        }
+        //addToMult(op)             //TMR - garbage
+        toMode(.operate(op))
     }
     
-    mutating func equalsButtonPressed() {
+    mutating func enterEqual() {
         toMode(.equals)
         computeDecision()
     }
@@ -130,18 +179,43 @@ struct CalcState : CustomStringConvertible {
         display.fraction = true
     }
     
+    mutating func swapSign() {
+        clearState = .clear
+        switch mode {
+        case .entry:
+            display.toggleSign()
+        case .equals:
+            modifyStackTopValue(multiplier: -1)
+        case .clear:
+            display.toggleSign()
+        case .operate:
+            modifyStackTopValue(multiplier: -1)
+        }
+    }
+    
+    mutating func percentage() {
+        clearState = .clear
+        switch mode {
+        case .entry:
+            display.percentage()
+        case .equals:
+            modifyStackTopValue(multiplier: 0.01)
+        case .clear:
+            display.percentage()
+        case .operate:
+            modifyStackTopValue(multiplier: 0.01)
+        }
+    }
+    
+    mutating func modifyStackTopValue(multiplier: Double) {
+        let value = calcStack.valueArray.last! * multiplier  //tmr - unwrap
+        calcStack.popValueStack()
+        calcStack.postValueStack(value)
+    }
+    
     mutating func clearDisplay() {
         display.reset()
-        switch clearState {
-        case .clear:
-            //calcStack.popValueStack()
-            clearState = .allClear
-            mode = .entry
-            print("clear ran")
-        case .allClear:
-            calcStack = CalcStack()
-            print("all clear ran")
-        }
+        toMode(.clear)
     }
     
     mutating func moveValueToStack(_ value: Double) {
@@ -154,7 +228,19 @@ struct CalcState : CustomStringConvertible {
         //print("compute decision value stack count \(calcStack.valueArray.count)")
         //print("compute decision operator stack count \(calcStack.operatorArray.count)")
         
-        //if operatorArray.last == (+) || (-) && currentOperatorEntry == (*) || (/) {
+        //For operator precedence
+        let plusCalcOp: CalcOp = (+)
+        let minusCalcOp: CalcOp = (-)
+        let multiplyCalcOp: CalcOp = (*)
+        let divideCalcOp: CalcOp = (/)
+        
+        //if operatorArray.last == plusCalcOp || (-) {//&& currentOperatorEntry == (*) || (/) {
+        let value = calcStack.operatorArray.last!  //tmr - need to unwrap
+    
+        
+        //if value === plusCalcOp {//|| minusCalcOp && calcStack.lastEntry == multiplyCalcOp || divideCalcOp {
+        //isEqual(value, plusCalcOp)
+        
         //    return
         //}
         while calcStack.valueArray.count >= 2 {
@@ -171,14 +257,41 @@ struct CalcState : CustomStringConvertible {
         let operatorTerm = calcStack.operatorArray.last
         calcStack.popOperatorStack()
         
+        /*
         //Perform the calculation and add the result to the value stack
         if let rt = rightTerm, let lt = leftTerm, let op = operatorTerm {
             let result = op(lt,rt)
             calcStack.valueArray.append(result)
+        } */
+        
+        if let rt = rightTerm, let lt = leftTerm, let op = operatorTerm {
+            switch op {
+            case .add: return lt + rt
+            case .subtract: return lt - rt
+            case .multiply: return lt * rt
+            case .divide: return lt / rt   //tmr - what about divide by zero?
         }
     }
     
-} 
+    enum Operation {
+        case add
+        case subtract
+        case multiply
+        case divide
+    }
+    
+    func Calculation(lt: Double, op: Operation, rt: Double) -> Double {
+        
+        switch op {
+        case .add: return lt + rt
+        case .subtract: return lt - rt
+        case .multiply: return lt * rt
+        case .divide: return lt / rt   //tmr - what about divide by zero?
+        }
+        
+    }
+    
+}
 
 
 
