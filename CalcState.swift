@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum CalcOp {
+enum CalcOp : Int {
     case add
     case subtract
     case multiply
@@ -23,22 +23,23 @@ enum CalcMode {
     case percent
 }
 
-enum ClearState {
+enum ClearState : Int {
     case clear
     case allClear
 }
 
-struct CalcState : CustomStringConvertible {
+class CalcState: NSObject, NSCoding {//: CustomStringConvertible {
     
     var mode: CalcMode = .entry
     var display: CalcDisplay = CalcDisplay()
     var calcStack: CalcStack = CalcStack()
     var clearState: ClearState = .allClear
     
-    var lastEntry: Double?
-    var lastOperator: CalcOp?
+    override init() {
+        super.init()
+    }
     
-    var description: String {
+    var desc: String {
         switch mode {
         case .entry, .clear:
             return display.description
@@ -52,7 +53,7 @@ struct CalcState : CustomStringConvertible {
         }
     }
     
-    mutating func toMode(_ newmode: CalcMode) {
+    func toMode(_ newmode: CalcMode) {
         switch (mode, newmode) {
         case (.entry, .entry):
             print("entry to entry")
@@ -73,7 +74,7 @@ struct CalcState : CustomStringConvertible {
             moveValueToStack(display.decimalValue)
             //Account for case 2+=
             if calcStack.valueArray.count == 1 && calcStack.operatorArray.count == 1 {
-                if let value = lastEntry {
+                if let value = calcStack.lastEntry {
                     calcStack.pushValueStack(value)
                     computeDecision()
                 }
@@ -81,16 +82,16 @@ struct CalcState : CustomStringConvertible {
         case (.equals, .equals):
             print("equal to equal")
             if !calcStack.valueArray.isEmpty {
-                if lastEntry != nil, lastOperator != nil {
-                    calcStack.pushValueStack(lastEntry!)
-                    calcStack.pushOperatorStack(lastOperator!)
+                if calcStack.lastEntry != nil, calcStack.lastOperator != nil {
+                    calcStack.pushValueStack(calcStack.lastEntry!)
+                    calcStack.pushOperatorStack(calcStack.lastOperator!)
                 }
             }
         case (.operate, .equals):
             print("operate to equal")
             if let value = calcStack.valueArray.last {
                 calcStack.pushValueStack(value)
-                lastEntry = value
+                calcStack.lastEntry = value
             }
         case (.equals, .entry), (.percent, .entry):
             print("equal or percent to entry")
@@ -114,8 +115,8 @@ struct CalcState : CustomStringConvertible {
             print("clear to clear")
             display.reset()
             calcStack = CalcStack()
-            lastEntry = nil
-            lastOperator = nil
+            calcStack.lastEntry = nil
+            calcStack.lastOperator = nil
         case (.clear, .entry):
             print("clear to entry")
         case (.clear, .operate):
@@ -129,7 +130,6 @@ struct CalcState : CustomStringConvertible {
             calcStack.multiplyTopValue(multiplier: 0.01)
         case (.percent, .percent):
             print("percent to percent")
-            moveValueToStack(display.decimalValue)
             calcStack.multiplyTopValue(multiplier: 0.01)
         case (.percent, .operate(let op)):
             print("percent to operate")
@@ -139,46 +139,46 @@ struct CalcState : CustomStringConvertible {
             print("percent to equal")
             //Account for case 2+%
             if calcStack.valueArray.count == 1 && calcStack.operatorArray.count == 1 {
-                if let value = lastEntry {
+                if let value = calcStack.lastEntry {
                     calcStack.pushValueStack(value)
                     computeDecision()
                 }
             }
         case (.entry, .percent):
             print("entry to percent")
-            let bufferEntry = lastEntry
+            let bufferEntry = calcStack.lastEntry
             moveValueToStack(display.decimalValue)
             calcStack.multiplyTopValue(multiplier: 0.01)
-            if lastOperator == .add || lastOperator == .subtract {    //tmr - if this works, need to protect it
+            if calcStack.lastOperator == .add || calcStack.lastOperator == .subtract {    //tmr - if this works, need to protect it
                 calcStack.multiplyTopValue(multiplier: bufferEntry!)
             }
         }
         mode = newmode
     }
     
-    mutating func enterOperation(op: CalcOp) {
-        lastOperator = op
+    func enterOperation(op: CalcOp) {
+        calcStack.lastOperator = op
         toMode(.operate(op))
     }
     
-    mutating func enterEqual() {
+    func enterEqual() {
         toMode(.equals)
         computeDecision()
     }
     
-    mutating func enterDigit(_ digit: UInt) {
+    func enterDigit(_ digit: UInt) {
         clearState = .clear
         toMode(.entry)
         display.appendDigit(digit)
     }
         
-    mutating func enterDecimal() {
+    func enterDecimal() {
         clearState = .clear
         toMode(.entry)
         display.fraction = true
     }
     
-    mutating func swapSign() {
+    func swapSign() {
         clearState = .clear
         switch mode {
         case .entry, .clear, .percent:
@@ -188,28 +188,28 @@ struct CalcState : CustomStringConvertible {
         }
     }
     
-    mutating func percentage() {
+    func percentage() {
         clearState = .clear
         toMode(.percent)
     }
     
-    mutating func clearDisplay() {
+    func clearDisplay() {
         display.reset()
         toMode(.clear)
     }
     
-    mutating func moveValueToStack(_ value: Double) {
+    func moveValueToStack(_ value: Double) {
         calcStack.pushValueStack(value)
-        lastEntry = value
+        calcStack.lastEntry = value
         display.reset()
     }
     
-    mutating func checkPrecedence() {
+    func checkPrecedence() {
         if let value = calcStack.operatorArray.last {
-            if (value == .add || value == .subtract) && (lastOperator == .multiply || lastOperator == .divide) {
+            if (value == .add || value == .subtract) && (calcStack.lastOperator == .multiply || calcStack.lastOperator == .divide) {
                 return
             }
-            if lastOperator == .add || lastOperator == .subtract {
+            if calcStack.lastOperator == .add || calcStack.lastOperator == .subtract {
                 while calcStack.valueArray.count >= 2 {
                     compute()
                 }
@@ -219,10 +219,10 @@ struct CalcState : CustomStringConvertible {
         }
     }
     
-    mutating func computeDecision() {
+    func computeDecision() {
         
         if let value = calcStack.operatorArray.last {
-            if (value == .add || value == .subtract) && (lastOperator == .multiply || lastOperator == .divide) {
+            if (value == .add || value == .subtract) && (calcStack.lastOperator == .multiply || calcStack.lastOperator == .divide) {
                 return
             }
             while calcStack.valueArray.count >= 2 {
@@ -231,7 +231,7 @@ struct CalcState : CustomStringConvertible {
         }
     }
     
-    mutating func compute() {
+    func compute() {
         //Load the operands and operators and update the stacks
         let rightTerm = calcStack.valueArray.last
         calcStack.popValueStack()
@@ -254,7 +254,41 @@ struct CalcState : CustomStringConvertible {
         print("compute complete \(calcStack.valueArray) \(calcStack.operatorArray)")
     }
     
+    /*
+    func encode(with aCoder: NSCoder) {
+        //aCoder.encode(mode.rawValue, forKey: "mode")
+        aCoder.encode(clearState.rawValue, forKey: "clearState")
+        
+        aCoder.encode(calcStack.lastEntry, forKey: "lastEntry")
+        aCoder.encode((calcStack.lastOperator?.rawValue)!, forKey: "lastOperator")
+        aCoder.encode(calcStack.valueArray, forKey: "valueArray")
+        //aCoder.encode(calcStack.operatorArray[0].rawValue, forKey: "operatorArray[0]")
+        
+        aCoder.encode(display.number, forKey: "number")
+        aCoder.encode(display.exponent, forKey: "exponent")
+        aCoder.encode(display.fraction, forKey: "fraction")
+        aCoder.encode(display.positive, forKey: "positive")
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        //mode = aDecoder.decodeObject(forKey: "mode") as! CalcMode
+        clearState = ClearState(rawValue: aDecoder.decodeInteger(forKey: "clearState"))!
+        
+        calcStack.lastEntry = aDecoder.decodeDouble(forKey: "lastEntry")
+        calcStack.lastOperator = CalcOp(rawValue: aDecoder.decodeInteger(forKey: "lastOperator"))
+        calcStack.valueArray = [aDecoder.decodeDouble(forKey: "valueArray")]
+        //calcStack.operatorArray[0] = CalcOp(rawValue: aDecoder.decodeInteger(forKey: "operatorArray[0]"))!
+        
+        display.number = aDecoder.decodeObject(forKey: "number") as! UInt
+        display.exponent = aDecoder.decodeObject(forKey: "exponent") as! UInt
+        display.fraction = aDecoder.decodeBool(forKey: "fraction")
+        display.positive = aDecoder.decodeBool(forKey: "positive")
+        
+        super.init()
+    } */
+
 }
+
 
 
 

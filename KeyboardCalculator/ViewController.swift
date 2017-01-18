@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     }
 
     func updateDisplayLabel() {
-       displayLabel.text = calc.description
+       displayLabel.text = calc.desc
     }
     
     //UI button outlets
@@ -92,11 +92,6 @@ class ViewController: UIViewController {
         updateClearButtonTitle()
     }
     
-    struct Test {
-        var calc: (Double, Double) -> Double
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -150,16 +145,24 @@ class ViewController: UIViewController {
         }
     }
     
+    //Set the URL for persisting data
+    let calcArchiveURL: URL = {
+        let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentDirectory = documentsDirectories.first!
+        return documentDirectory.appendingPathComponent("calc.archive")
+    }()
+    
+    func saveChanges() -> Bool {
+        print("Saving items to \(calcArchiveURL.path)")
+        return NSKeyedArchiver.archiveRootObject(calc, toFile: calcArchiveURL.path)
+    }
+    
 }
 
 
-//Change the word post to push
-
 //To Do
 //Persist data
-//Try formatting in CalcDisplay.  Formatting in CalcState.description, too. (Can you control when the exp comes into play?)
-//Deal with optional criterium in the entry to operate case
-//What about the structure?  Does it make sense?
+//Try formatting in CalcDisplay.  Formatting in CalcState.description, too. (Can you control when the exp comes into play?)   Get rid of CustomStringConvertible protocol?
 //See if you should put ads back in
 
 
