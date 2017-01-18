@@ -41,18 +41,18 @@ struct CalcState : CustomStringConvertible {
         switch mode {
         case .entry:
             return display.description
-        case .operate:   //tmr - put the below statements into a function after you've stopped crashing
+        case .operate:
             if let value = calcStack.valueArray.last {
                 return String(format: "%g", value)
             } else {
-                print("calcState.description.operate failed")
+                print("calcState.description.operate returned 0")
                 return "0"
             }
         case .equals:
             if let value = calcStack.valueArray.last {
                 return String(format: "%g", value)
             } else {
-                print("calcState.description.equals failed")
+                print("calcState.description.equals returned 0")
                 return "0"
             }
         case .clear:
@@ -67,16 +67,15 @@ struct CalcState : CustomStringConvertible {
         case (.entry, .operate(let op)):
             print("entry to operate")
             moveValueToStack(display.decimalValue)
-            //OPTIONAL:  If the value stack.count and op stack.count are equal and not zero, pop the last operator off the stack.  This covers the case if an operator was hit before a value.
-            computeDecision()
+            checkPrecedence()
             calcStack.postOperatorStack(op)
         case (.operate, .operate(let op)):
             print("operate to operate")
             if !calcStack.operatorArray.isEmpty {
                 calcStack.popOperatorStack()
             }
-            calcStack.postOperatorStack(op)
-            computeDecision()
+            checkPrecedence()
+            calcStack.postOperatorStack(op)  //note, this line used to be above computeDecision.  It was moved to accomodate 2+4*/ case
         case (.entry, .equals):
             print("entry to equal")
             moveValueToStack(display.decimalValue)
@@ -97,8 +96,9 @@ struct CalcState : CustomStringConvertible {
             }
         case (.operate, .equals):
             print("operate to equal")
-            if let value = lastEntry {
+            if let value = calcStack.valueArray.last {
                 calcStack.postValueStack(value)
+                lastEntry = value
             }
         case (.equals, .entry):
             print("equal to entry")
@@ -106,9 +106,9 @@ struct CalcState : CustomStringConvertible {
             calcStack.popValueStack()
         case (.operate, .entry):
             print("operate to entry")
-        case (.equals, .operate):
+        case (.equals, .operate(let op)):
             print("equal to operate")
-            //not sure what this should do
+            calcStack.postOperatorStack(op)
         case (.entry, .clear):
             print("entry to clear")
             display.reset()
@@ -178,6 +178,7 @@ struct CalcState : CustomStringConvertible {
         switch mode {
         case .entry:
             display.percentage()
+            display.reset()
         case .equals:
             calcStack.modifyTopValue(multiplier: 0.01)
         case .clear:
@@ -198,10 +199,43 @@ struct CalcState : CustomStringConvertible {
         display.reset()
     }
     
+    mutating func checkPrecedence() {
+        if let value = calcStack.operatorArray.last {
+            if (value == .add || value == .subtract) && (lastOperator == .multiply || lastOperator == .divide) {
+                return
+            }
+            if lastOperator == .add || lastOperator == .subtract {
+                while calcStack.valueArray.count >= 2 {
+                    compute()
+                }
+            } else {
+                compute()
+            }
+        }
+    }
+    
     mutating func computeDecision() {
-        //print("compute decision value stack count \(calcStack.valueArray.count)")
-        //print("compute decision operator stack count \(calcStack.operatorArray.count)")
         
+        if let value = calcStack.operatorArray.last {
+            if (value == .add || value == .subtract) && (lastOperator == .multiply || lastOperator == .divide) {
+                return
+            }
+            while calcStack.valueArray.count >= 2 {
+                compute()
+            }
+        }
+
+        /*
+        while calcStack.valueArray.count >= 2 {
+            if let value = calcStack.operatorArray.last {
+                if (value == .add || value == .subtract) && (lastOperator == .multiply || lastOperator == .divide) {
+                    return
+                } else {
+                    compute()
+                }
+            }
+        } */
+        /*
         if let value = calcStack.operatorArray.last {
             if (value == .add || value == .subtract) && (lastOperator == .multiply || lastOperator == .divide) {
                 return
@@ -210,7 +244,13 @@ struct CalcState : CustomStringConvertible {
         while calcStack.valueArray.count >= 2 {
             compute()
         }
+        } */
     }
+    
+    //when do you stop and when do you go?
+    //2+3*4=  //2+12    //it didn't continue cause last op = *  maybe that only matters first time around.  No, you have to keep checking.
+    //2+3*4*  //14      //it kept going because it did
+    //you keep going on =, you don't keep going on *.  
     
     mutating func compute() {
         //Load the operands and operators and update the stacks
@@ -230,11 +270,12 @@ struct CalcState : CustomStringConvertible {
             case .divide: result = lt / rt
             }
             calcStack.valueArray.append(result)
+            print("\(leftTerm) \(operatorTerm) \(rightTerm) = \(result)")
         }
+        print("compute complete \(calcStack.valueArray) \(calcStack.operatorArray)")
     }
     
 }
-
 
 
 

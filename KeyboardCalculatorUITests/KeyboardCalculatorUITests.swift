@@ -116,18 +116,17 @@ class KeyboardCalculatorUITests: XCTestCase {
         app.buttons["÷"].tap()
         XCTAssert(app.staticTexts["4"].exists)
     }
-    //2+4*6+*
+    //2+3+*5=       //note, this answer matches the Mac calculator
     func test9() {
         let app = XCUIApplication()
         app.buttons["2"].tap()
         app.buttons["+"].tap()
-        app.buttons["4"].tap()
-        app.buttons["x"].tap()
-        app.buttons["6"].tap()
+        app.buttons["3"].tap()
         app.buttons["+"].tap()
         app.buttons["x"].tap()
+        app.buttons["5"].tap()
         app.buttons["="].tap()
-        XCTAssert(app.staticTexts["578"].exists)
+        XCTAssert(app.staticTexts["25"].exists)
     }
     
     func test10() {
@@ -191,7 +190,7 @@ class KeyboardCalculatorUITests: XCTestCase {
         app.buttons["5"].tap()
         app.buttons["%"].tap()
         app.buttons["="].tap()
-        XCTAssert(app.staticTexts["21"].exists)
+        XCTAssert(app.staticTexts["20.05"].exists)
     }
     
     func test16() {
@@ -211,7 +210,7 @@ class KeyboardCalculatorUITests: XCTestCase {
     func test17() {
         let app = XCUIApplication()
         app.buttons["8"].tap()
-        app.buttons["%"].tap()
+        app.buttons["÷"].tap()
         app.buttons["0"].tap()
         app.buttons["="].tap()
         XCTAssert(app.staticTexts["inf"].exists)
@@ -237,6 +236,115 @@ class KeyboardCalculatorUITests: XCTestCase {
         app.buttons["6"].tap()
         app.buttons["="].tap()
         XCTAssert(app.staticTexts["27"].exists)
+    }
+    
+    func test20() {
+        let app = XCUIApplication()
+        app.buttons["2"].tap()
+        app.buttons["+"].tap()
+        app.buttons["="].tap()
+        XCTAssert(app.staticTexts["4"].exists)
+    }
+    
+    func test22() {
+        let app = XCUIApplication()
+        app.buttons["2"].tap()
+        app.buttons["+"].tap()
+        app.buttons["="].tap()
+        app.buttons["="].tap()
+        XCTAssert(app.staticTexts["6"].exists)
+    }
+    
+    func test23() {
+        let app = XCUIApplication()
+        app.buttons["2"].tap()
+        app.buttons["+"].tap()
+        app.buttons["3"].tap()
+        app.buttons["+"].tap()
+        app.buttons["="].tap()
+        XCTAssert(app.staticTexts["10"].exists)
+    }
+    
+    func test24() {
+        let app = XCUIApplication()
+        app.buttons["2"].tap()
+        app.buttons["+"].tap()
+        app.buttons["3"].tap()
+        app.buttons["+"].tap()
+        app.buttons["="].tap()
+        app.buttons["="].tap()
+        XCTAssert(app.staticTexts["15"].exists)
+    }
+    
+    func test25() {
+        let app = XCUIApplication()
+        app.buttons["+"].tap()
+        app.buttons["3"].tap()
+        app.buttons["+"].tap()
+        XCTAssert(app.staticTexts["3"].exists)
+    }
+    
+    func test26() {
+        let app = XCUIApplication()
+        app.buttons["+"].tap()
+        app.buttons["3"].tap()
+        app.buttons["="].tap()
+        app.buttons["="].tap()
+        XCTAssert(app.staticTexts["6"].exists)
+    }
+    
+    func test27() {
+        let app = XCUIApplication()
+        app.buttons["+"].tap()
+        app.buttons["3"].tap()
+        app.buttons["+"].tap()
+        app.buttons["6"].tap()
+        app.buttons["="].tap()
+        XCTAssert(app.staticTexts["9"].exists)
+    }
+    
+    func test28() {
+        let app = XCUIApplication()
+        app.buttons["2"].tap()
+        app.buttons["+"].tap()
+        app.buttons["3"].tap()
+        app.buttons["x"].tap()
+        app.buttons["4"].tap()
+        app.buttons["="].tap()
+        XCTAssert(app.staticTexts["14"].exists)
+    }
+    
+    func test29() {
+        let app = XCUIApplication()
+        app.buttons["2"].tap()
+        app.buttons["+"].tap()
+        app.buttons["4"].tap()
+        app.buttons["x"].tap()
+        XCTAssert(app.staticTexts["4"].exists)
+    }
+    
+    func test30() {
+        let app = XCUIApplication()
+        app.buttons["2"].tap()
+        app.buttons["+"].tap()
+        app.buttons["3"].tap()
+        app.buttons["x"].tap()
+        app.buttons["2"].tap()
+        app.buttons["+"].tap()
+        app.buttons["="].tap()
+        XCTAssert(app.staticTexts["16"].exists)
+    }
+    
+    func test31() {
+        let app = XCUIApplication()
+        app.buttons["2"].tap()
+        app.buttons["+"].tap()
+        app.buttons["3"].tap()
+        app.buttons["x"].tap()
+        app.buttons["2"].tap()
+        app.buttons["x"].tap()
+        app.buttons["="].tap()
+        XCTAssert(app.staticTexts["38"].exists)
     }
     
 }

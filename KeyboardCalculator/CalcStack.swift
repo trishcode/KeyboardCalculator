@@ -15,21 +15,25 @@ struct CalcStack {
     
     mutating func postValueStack(_ value: Double) {
         valueArray.append(value)
+        print("post Val \(valueArray)")
     }
     
     mutating func postOperatorStack(_ op: CalcOp) {
         operatorArray.append(op)
+        print("post Op \(operatorArray)")
     }
     
     mutating func popValueStack() {
         if valueArray.count != 0 {
             valueArray.removeLast()
+            print("pop Val \(valueArray)")
         }
     }
     
     mutating func popOperatorStack() {
         if operatorArray.count != 0 {
             _ = operatorArray.removeLast()
+            print("pop Op \(operatorArray)")
         }
     }
     
