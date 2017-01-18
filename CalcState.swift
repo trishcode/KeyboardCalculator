@@ -20,6 +20,7 @@ enum CalcMode {
     case operate(CalcOp)
     case equals
     case clear
+    case percent
 }
 
 enum ClearState {
@@ -39,24 +40,15 @@ struct CalcState : CustomStringConvertible {
     
     var description: String {
         switch mode {
-        case .entry:
+        case .entry, .clear:
             return display.description
-        case .operate:
+        case .operate, .equals, .percent:
             if let value = calcStack.valueArray.last {
                 return String(format: "%g", value)
             } else {
-                print("calcState.description.operate returned 0")
+                print("calcState.description returned 0")
                 return "0"
             }
-        case .equals:
-            if let value = calcStack.valueArray.last {
-                return String(format: "%g", value)
-            } else {
-                print("calcState.description.equals returned 0")
-                return "0"
-            }
-        case .clear:
-            return display.description
         }
     }
     
@@ -68,21 +60,21 @@ struct CalcState : CustomStringConvertible {
             print("entry to operate")
             moveValueToStack(display.decimalValue)
             checkPrecedence()
-            calcStack.postOperatorStack(op)
+            calcStack.pushOperatorStack(op)
         case (.operate, .operate(let op)):
             print("operate to operate")
             if !calcStack.operatorArray.isEmpty {
                 calcStack.popOperatorStack()
             }
             checkPrecedence()
-            calcStack.postOperatorStack(op)  //note, this line used to be above computeDecision.  It was moved to accomodate 2+4*/ case
+            calcStack.pushOperatorStack(op)  //note, this line used to be above computeDecision.  It was moved to accomodate 2+4*/ case
         case (.entry, .equals):
             print("entry to equal")
             moveValueToStack(display.decimalValue)
             //Account for case 2+=
             if calcStack.valueArray.count == 1 && calcStack.operatorArray.count == 1 {
                 if let value = lastEntry {
-                    calcStack.postValueStack(value)
+                    calcStack.pushValueStack(value)
                     computeDecision()
                 }
             }
@@ -90,31 +82,27 @@ struct CalcState : CustomStringConvertible {
             print("equal to equal")
             if !calcStack.valueArray.isEmpty {
                 if lastEntry != nil, lastOperator != nil {
-                    calcStack.postValueStack(lastEntry!)
-                    calcStack.postOperatorStack(lastOperator!)
+                    calcStack.pushValueStack(lastEntry!)
+                    calcStack.pushOperatorStack(lastOperator!)
                 }
             }
         case (.operate, .equals):
             print("operate to equal")
             if let value = calcStack.valueArray.last {
-                calcStack.postValueStack(value)
+                calcStack.pushValueStack(value)
                 lastEntry = value
             }
-        case (.equals, .entry):
-            print("equal to entry")
+        case (.equals, .entry), (.percent, .entry):
+            print("equal or percent to entry")
             display.reset()
             calcStack.popValueStack()
         case (.operate, .entry):
             print("operate to entry")
         case (.equals, .operate(let op)):
             print("equal to operate")
-            calcStack.postOperatorStack(op)
-        case (.entry, .clear):
-            print("entry to clear")
-            display.reset()
-            clearState = .allClear
-        case (.operate, .clear):
-            print("operate to clear")
+            calcStack.pushOperatorStack(op)
+        case (.entry, .clear), (.percent, .clear), (.operate, .clear):
+            print("entry or operate or percent to clear")
             display.reset()
             clearState = .allClear
         case (.equals, .clear):
@@ -126,16 +114,47 @@ struct CalcState : CustomStringConvertible {
             print("clear to clear")
             display.reset()
             calcStack = CalcStack()
+            lastEntry = nil
+            lastOperator = nil
         case (.clear, .entry):
             print("clear to entry")
         case (.clear, .operate):
             print("clear to operate")
         case (.clear, .equals):
             print("clear to equal")
+        case (.clear, .percent):
+            print("clear to percent")
+        case (.operate, .percent), (.equals, .percent):
+            print("operate or equals to percent")
+            calcStack.multiplyTopValue(multiplier: 0.01)
+        case (.percent, .percent):
+            print("percent to percent")
+            moveValueToStack(display.decimalValue)
+            calcStack.multiplyTopValue(multiplier: 0.01)
+        case (.percent, .operate(let op)):
+            print("percent to operate")
+            checkPrecedence()
+            calcStack.pushOperatorStack(op)
+        case (.percent, .equals):
+            print("percent to equal")
+            //Account for case 2+%
+            if calcStack.valueArray.count == 1 && calcStack.operatorArray.count == 1 {
+                if let value = lastEntry {
+                    calcStack.pushValueStack(value)
+                    computeDecision()
+                }
+            }
+        case (.entry, .percent):
+            print("entry to percent")
+            let bufferEntry = lastEntry
+            moveValueToStack(display.decimalValue)
+            calcStack.multiplyTopValue(multiplier: 0.01)
+            if lastOperator == .add || lastOperator == .subtract {    //tmr - if this works, need to protect it
+                calcStack.multiplyTopValue(multiplier: bufferEntry!)
+            }
         }
         mode = newmode
     }
-    
     
     mutating func enterOperation(op: CalcOp) {
         lastOperator = op
@@ -162,30 +181,16 @@ struct CalcState : CustomStringConvertible {
     mutating func swapSign() {
         clearState = .clear
         switch mode {
-        case .entry:
+        case .entry, .clear, .percent:
             display.toggleSign()
-        case .equals:
-            calcStack.modifyTopValue(multiplier: -1)
-        case .clear:
-            display.toggleSign()
-        case .operate:
-            calcStack.modifyTopValue(multiplier: -1)
+        case .equals, .operate:
+            calcStack.multiplyTopValue(multiplier: -1)
         }
     }
     
     mutating func percentage() {
         clearState = .clear
-        switch mode {
-        case .entry:
-            display.percentage()
-            display.reset()
-        case .equals:
-            calcStack.modifyTopValue(multiplier: 0.01)
-        case .clear:
-            display.percentage()
-        case .operate:
-            calcStack.modifyTopValue(multiplier: 0.01)
-        }
+        toMode(.percent)
     }
     
     mutating func clearDisplay() {
@@ -194,7 +199,7 @@ struct CalcState : CustomStringConvertible {
     }
     
     mutating func moveValueToStack(_ value: Double) {
-        calcStack.postValueStack(value)
+        calcStack.pushValueStack(value)
         lastEntry = value
         display.reset()
     }
@@ -224,33 +229,7 @@ struct CalcState : CustomStringConvertible {
                 compute()
             }
         }
-
-        /*
-        while calcStack.valueArray.count >= 2 {
-            if let value = calcStack.operatorArray.last {
-                if (value == .add || value == .subtract) && (lastOperator == .multiply || lastOperator == .divide) {
-                    return
-                } else {
-                    compute()
-                }
-            }
-        } */
-        /*
-        if let value = calcStack.operatorArray.last {
-            if (value == .add || value == .subtract) && (lastOperator == .multiply || lastOperator == .divide) {
-                return
-            }
-        }
-        while calcStack.valueArray.count >= 2 {
-            compute()
-        }
-        } */
     }
-    
-    //when do you stop and when do you go?
-    //2+3*4=  //2+12    //it didn't continue cause last op = *  maybe that only matters first time around.  No, you have to keep checking.
-    //2+3*4*  //14      //it kept going because it did
-    //you keep going on =, you don't keep going on *.  
     
     mutating func compute() {
         //Load the operands and operators and update the stacks

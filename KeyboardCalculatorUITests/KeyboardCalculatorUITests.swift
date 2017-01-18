@@ -190,7 +190,7 @@ class KeyboardCalculatorUITests: XCTestCase {
         app.buttons["5"].tap()
         app.buttons["%"].tap()
         app.buttons["="].tap()
-        XCTAssert(app.staticTexts["20.05"].exists)
+        XCTAssert(app.staticTexts["21"].exists)
     }
     
     func test16() {
@@ -347,4 +347,13 @@ class KeyboardCalculatorUITests: XCTestCase {
         XCTAssert(app.staticTexts["38"].exists)
     }
     
+    func test32() {
+        let app = XCUIApplication()
+        app.buttons["2"].tap()
+        app.buttons["+"].tap()
+        app.buttons["3"].tap()
+        app.buttons["="].tap()
+        app.buttons["5"].tap()
+        XCTAssert(app.staticTexts["5"].exists)
+    }
 }

@@ -49,15 +49,13 @@ struct CalcDisplay : CustomStringConvertible {
         positive = positive ? false : true
     }
     
+    /*
     mutating func percentage() {
-        print("number = \(number)")
-        print("fraction = \(fraction)")
-        print("exponent = \(exponent)")
         exponent = exponent + 2
         if exponent < 0 {
             fraction = true
         }
-    }
+    } */
 
     mutating func reset() {
         self = CalcDisplay()

@@ -13,12 +13,12 @@ struct CalcStack {
     var valueArray: [Double] = []
     var operatorArray: [CalcOp] = []
     
-    mutating func postValueStack(_ value: Double) {
+    mutating func pushValueStack(_ value: Double) {
         valueArray.append(value)
         print("post Val \(valueArray)")
     }
     
-    mutating func postOperatorStack(_ op: CalcOp) {
+    mutating func pushOperatorStack(_ op: CalcOp) {
         operatorArray.append(op)
         print("post Op \(operatorArray)")
     }
@@ -37,11 +37,11 @@ struct CalcStack {
         }
     }
     
-    mutating func modifyTopValue(multiplier: Double) {
+    mutating func multiplyTopValue(multiplier: Double) {
         if var value = valueArray.last {
             value = value * multiplier
             popValueStack()
-            postValueStack(value)
+            pushValueStack(value)
         }
     }
     

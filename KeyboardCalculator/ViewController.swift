@@ -153,15 +153,7 @@ class ViewController: UIViewController {
 }
 
 
-//What if I wanted to do it like that?
-//100+12% = 112
-//100*12% = 12
-//12% is .12, so when I multiply it times 100 it's 12, and when I add it to 100 it's 100.12
-
-//I guess I can check the preceding operator.  And what?  How do you get the + answer.
-//100*12% + 100
-//If I hit the percent sign
-
+//Change the word post to push
 
 //To Do
 //Persist data
