@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var bannerView: GADBannerView!
+    
     
     var calc = CalcState()
     var keyCommandArray = [UIKeyCommand]()
@@ -81,12 +85,14 @@ class ViewController: UIViewController {
         case .Decimal: calc.enterDecimal()
         default: return
         }
-
+        
+        print(type.rawValue)
         updateDisplayLabel()
         updateClearButtonTitle()
     }
     
     @IBAction func clearButtonPress(_ sender: CalcButton) {
+        print("clear")
         calc.clearDisplay()
         updateDisplayLabel()
         updateClearButtonTitle()
@@ -94,6 +100,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Google Mobile Ads configuration.  Ad id is specific to this app and ad
+        //print("Google Mobile Ads SDK version: " + GADRequest.sdkVersion())
+        bannerView.adUnitID = "ca-app-pub-5593562904789382/8592782157"   
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
         
         //Load array for keyboard commands.
         keyPressArray = [

@@ -20,6 +20,7 @@
 		25D6C8501E2846E2001D3C91 /* CalcState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D6C84F1E2846E2001D3C91 /* CalcState.swift */; };
 		25D6C8521E284F12001D3C91 /* CalcStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D6C8511E284F12001D3C91 /* CalcStack.swift */; };
 		25D744C21E294BAD008A5608 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D744C11E294BAD008A5608 /* DisplayView.swift */; };
+		25D744DA1E3155CC008A5608 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25D744D91E3155CC008A5608 /* GoogleMobileAds.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		25D6C84F1E2846E2001D3C91 /* CalcState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalcState.swift; path = ../CalcState.swift; sourceTree = "<group>"; };
 		25D6C8511E284F12001D3C91 /* CalcStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcStack.swift; sourceTree = "<group>"; };
 		25D744C11E294BAD008A5608 /* DisplayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
+		25D744D91E3155CC008A5608 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25D744DA1E3155CC008A5608 /* GoogleMobileAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +96,7 @@
 				259F3D881E255F8600C50FAC /* KeyboardCalculatorTests */,
 				259F3D931E255F8700C50FAC /* KeyboardCalculatorUITests */,
 				259F3D721E255F8600C50FAC /* Products */,
+				25D744D81E315573008A5608 /* Framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,6 +145,15 @@
 				259F3D961E255F8700C50FAC /* Info.plist */,
 			);
 			path = KeyboardCalculatorUITests;
+			sourceTree = "<group>";
+		};
+		25D744D81E315573008A5608 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				25D744D91E3155CC008A5608 /* GoogleMobileAds.framework */,
+			);
+			name = Framework;
+			path = KeyboardCalculator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,6 +451,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8KE95UJMR7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/KeyboardCalculator",
+				);
 				INFOPLIST_FILE = KeyboardCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trishcode.KeyboardCalculator;
@@ -451,6 +468,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8KE95UJMR7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/KeyboardCalculator",
+				);
 				INFOPLIST_FILE = KeyboardCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trishcode.KeyboardCalculator;

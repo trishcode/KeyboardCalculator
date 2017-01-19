@@ -43,7 +43,6 @@ struct CalcState {
             if let lastValue = calcStack.valueArray.last {
                 if lastValue > 1000000000 {
                     if let formattedValue = scientificFormatter.string(from: NSNumber(value: lastValue)) {
-                        print(formattedValue)
                         return formattedValue
                     } else {
                         print("calcState.description returned 0")
@@ -51,7 +50,6 @@ struct CalcState {
                     }
                 } else {
                     if let formattedValue = decimalFormatter.string(from: NSNumber(value: lastValue)) {
-                        print(formattedValue)
                         return formattedValue
                     } else {
                         print("calcState.description returned 0")
@@ -173,12 +171,10 @@ struct CalcState {
     
     mutating func enterOperation(op: CalcOp) {
         calcStack.lastOperator = op
-        print(op)
         toMode(.operate(op))
     }
     
     mutating func enterEqual() {
-        print("equals")
         toMode(.equals)
         computeDecision()
     }
@@ -196,7 +192,6 @@ struct CalcState {
     }
     
     mutating func swapSign() {
-        print("+/-")
         clearState = .clear
         switch mode {
         case .entry, .clear:
@@ -207,13 +202,11 @@ struct CalcState {
     }
     
     mutating func percentage() {
-        print("%")
         clearState = .clear
         toMode(.percent)
     }
     
     mutating func clearDisplay() {
-        print("clear)")
         display.reset()
         toMode(.clear)
     }
@@ -269,7 +262,7 @@ struct CalcState {
             case .divide: result = lt / rt
             }
             calcStack.valueArray.append(result)
-            print("\(leftTerm) \(operatorTerm) \(rightTerm) = \(result)")
+            //print("\(leftTerm) \(operatorTerm) \(rightTerm) = \(result)")
         }
     }
 }
