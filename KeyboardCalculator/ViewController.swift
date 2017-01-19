@@ -94,7 +94,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //Load array for keyboard commands.
         keyPressArray = [
             keyPress(input: "1", title: "number 1", button: oneButton),
@@ -145,25 +145,7 @@ class ViewController: UIViewController {
         }
     }
     
-    //Set the URL for persisting data
-    let calcArchiveURL: URL = {
-        let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let documentDirectory = documentsDirectories.first!
-        return documentDirectory.appendingPathComponent("calc.archive")
-    }()
-    
-    func saveChanges() -> Bool {
-        print("Saving items to \(calcArchiveURL.path)")
-        return NSKeyedArchiver.archiveRootObject(calc, toFile: calcArchiveURL.path)
-    }
-    
 }
-
-
-//To Do
-//Persist data
-//Try formatting in CalcDisplay.  Formatting in CalcState.description, too. (Can you control when the exp comes into play?)   Get rid of CustomStringConvertible protocol?
-//See if you should put ads back in
 
 
 

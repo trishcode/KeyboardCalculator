@@ -213,7 +213,7 @@ class KeyboardCalculatorUITests: XCTestCase {
         app.buttons["÷"].tap()
         app.buttons["0"].tap()
         app.buttons["="].tap()
-        XCTAssert(app.staticTexts["inf"].exists)
+        XCTAssert(app.staticTexts["+∞"].exists)
     }
     
     func test18() {

@@ -8,32 +8,46 @@
 
 import Foundation
 
+public let decimalFormatter: NumberFormatter = {
+    let nf = NumberFormatter()
+    nf.numberStyle = .decimal
+    nf.maximumSignificantDigits = 10
+    return nf
+}()
+
+public let scientificFormatter: NumberFormatter = {
+    let nf = NumberFormatter()
+    nf.numberStyle = .scientific
+    nf.maximumSignificantDigits = 7
+    return nf
+}()
+
 /// A numeric entry area that handles partially-entered numbers such as "-0."
-struct CalcDisplay : CustomStringConvertible {
+struct CalcDisplay {
     var number: UInt = 0
     var exponent: UInt = 0
     var fraction = false
     var positive = true
+
     
-    let numberFormatter: NumberFormatter = {
-        let nf = NumberFormatter()
-        nf.numberStyle = .decimal
-        nf.minimumFractionDigits = 0
-        nf.maximumFractionDigits = 1
-        return nf
-    }()
-    
-    /// The currently entered number as a Double
+    // The currently entered number as a Double
     var decimalValue: Double {
         return (positive ? +1 : -1) * Double(number) / pow(10, Double(exponent))
     }
     
     var description : String {
-        if fraction {
-            let desc = String(format: "%.\(exponent+1)f", self.decimalValue)
-            return String(desc.characters.dropLast())  //TMR - antiquated
+        if decimalValue > 1000000000 {
+            if let formattedValue = scientificFormatter.string(from: NSNumber(value: decimalValue)) {
+                return formattedValue
+            } else {
+                return "0"
+            }
         } else {
-            return String(format: "%g", self.decimalValue)
+            if let formattedValue = decimalFormatter.string(from: NSNumber(value: decimalValue)) {
+                return formattedValue
+            } else {
+                return "0"
+            }
         }
     }
     
@@ -61,17 +75,3 @@ struct CalcDisplay : CustomStringConvertible {
         self = CalcDisplay()
     }
 }
-
-
-
-/*
- let numberFormatter: NumberFormatter = {
- let nf = NumberFormatter()
- nf.numberStyle = .decimal
- nf.minimumFractionDigits = 0
- nf.maximumFractionDigits = 1
- return nf
- }()
- 
- celsiusLabel.text = numberFormatter.string(for: value)
- */
