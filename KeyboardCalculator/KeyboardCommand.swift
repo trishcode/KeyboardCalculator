@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Data model for the keyboard button
 struct keyPress {
     var input: String
     var title: String

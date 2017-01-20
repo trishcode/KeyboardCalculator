@@ -45,7 +45,8 @@ class CalcButton: UIButton {
         let name: String = self.title(for: .normal)!
         let type = CalcButtonType(rawValue: name)!
         
-        switch type { // set the appropriate background based on the kind of button
+        //Set the appropriate button attributes based on the kind of button
+        switch type {
         case .Plus, .Multiply, .Minus, .Divide, .Equal:
             normalBGC = UIColor(red: 255/255, green: 128/255, blue: 0/255, alpha: 1)
             highlightedBGC = UIColor(red: 190/255, green: 112/255, blue: 0/255, alpha: 1)

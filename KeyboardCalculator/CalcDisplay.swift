@@ -22,7 +22,7 @@ public let scientificFormatter: NumberFormatter = {
     return nf
 }()
 
-/// A numeric entry area that handles partially-entered numbers such as "-0."
+//Numeric entry area
 struct CalcDisplay {
     var number: UInt = 0
     var exponent: UInt = 0
@@ -30,11 +30,12 @@ struct CalcDisplay {
     var positive = true
 
     
-    // The currently entered number as a Double
+    //The currently entered number as a Double
     var decimalValue: Double {
         return (positive ? +1 : -1) * Double(number) / pow(10, Double(exponent))
     }
     
+    //Formatted for display
     var description : String {
         if decimalValue > 1000000000 {
             if let formattedValue = scientificFormatter.string(from: NSNumber(value: decimalValue)) {

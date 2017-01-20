@@ -11,15 +11,15 @@ import GoogleMobileAds
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var bannerView: GADBannerView!
-    
-    
     var calc = CalcState()
     var keyCommandArray = [UIKeyCommand]()
     var keyPressArray = [keyPress]()
 
     //Display label outlet
     @IBOutlet var displayLabel: DisplayView!
+    
+    //Ad banner outlet
+    @IBOutlet weak var bannerView: GADBannerView!
     
     func updateClearButtonTitle() {
         var title: String {
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
     @IBOutlet var percentageButton: CalcButton!
     @IBOutlet var signButton: CalcButton!
     
-    
+    //UI button action
     @IBAction func press(_ button: CalcButton) {
         
         let name = button.title(for: .normal)!
@@ -86,13 +86,12 @@ class ViewController: UIViewController {
         default: return
         }
         
-        print(type.rawValue)
+        //print(type.rawValue)
         updateDisplayLabel()
         updateClearButtonTitle()
     }
     
     @IBAction func clearButtonPress(_ sender: CalcButton) {
-        print("clear")
         calc.clearDisplay()
         updateDisplayLabel()
         updateClearButtonTitle()

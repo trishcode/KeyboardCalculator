@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Handles the entry and operator arrays
 struct CalcStack {
     
     var valueArray: [Double] = []
@@ -18,25 +19,21 @@ struct CalcStack {
     
     mutating func pushValueStack(_ value: Double) {
         valueArray.append(value)
-        //print("post Val \(valueArray)")
     }
     
     mutating func pushOperatorStack(_ op: CalcOp) {
         operatorArray.append(op)
-        //print("post Op \(operatorArray)")
     }
     
     mutating func popValueStack() {
-        if valueArray.count != 0 {
+        if !valueArray.isEmpty {
             valueArray.removeLast()
-            //print("pop Val \(valueArray)")
         }
     }
     
     mutating func popOperatorStack() {
-        if operatorArray.count != 0 {
+        if !operatorArray.isEmpty {
             _ = operatorArray.removeLast()
-            //print("pop Op \(operatorArray)")
         }
     }
     
