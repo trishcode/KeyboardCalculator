@@ -224,7 +224,7 @@
 				TargetAttributes = {
 					259F3D701E255F8600C50FAC = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 8KE95UJMR7;
+						DevelopmentTeam = CLTYD6RLE7;
 						ProvisioningStyle = Automatic;
 					};
 					259F3D841E255F8600C50FAC = {
@@ -450,12 +450,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8KE95UJMR7;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = CLTYD6RLE7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/KeyboardCalculator",
 				);
 				INFOPLIST_FILE = KeyboardCalculator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trishcode.KeyboardCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -467,12 +469,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8KE95UJMR7;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = CLTYD6RLE7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/KeyboardCalculator",
 				);
 				INFOPLIST_FILE = KeyboardCalculator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trishcode.KeyboardCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";

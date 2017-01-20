@@ -28,10 +28,11 @@ class KeyboardCalculatorUITests: XCTestCase {
         super.tearDown()
     }
     
+    /*
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+    } */
     
     func test1() {
         let app = XCUIApplication()
@@ -377,6 +378,28 @@ class KeyboardCalculatorUITests: XCTestCase {
         app.buttons["%"].tap()
         app.buttons["%"].tap()
         XCTAssert(app.staticTexts["0.08"].exists)
+    }
+    
+    func test35() {
+        let app = XCUIApplication()
+        app.buttons["2"].tap()
+        app.buttons["+"].tap()
+        app.buttons["3"].tap()
+        app.buttons["+"].tap()
+        app.buttons["x"].tap()
+        app.buttons["="].tap()
+        XCTAssert(app.staticTexts["25"].exists)
+    }
+    
+    func test36() {
+        let app = XCUIApplication()
+        app.buttons["2"].tap()
+        app.buttons["+"].tap()
+        app.buttons["3"].tap()
+        app.buttons["x"].tap()
+        app.buttons["+"].tap()
+        app.buttons["="].tap()
+        XCTAssert(app.staticTexts["10"].exists)
     }
     
 }
