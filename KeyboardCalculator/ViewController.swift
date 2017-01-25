@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     //Display label outlet
     @IBOutlet var displayLabel: DisplayView!
     
-    //Ad banner outlet
+    //Google Ad banner outlet
     @IBOutlet weak var bannerView: GADBannerView!
     
     func updateClearButtonTitle() {
@@ -57,6 +57,7 @@ class ViewController: UIViewController {
     @IBOutlet var clearButton: CalcButton!
     @IBOutlet var percentageButton: CalcButton!
     @IBOutlet var signButton: CalcButton!
+    @IBOutlet var backButton: CalcButton!
     
     //UI button action
     @IBAction func press(_ button: CalcButton) {
@@ -82,11 +83,11 @@ class ViewController: UIViewController {
         case .SwapSign: calc.swapSign(); displayLabel.flash()
         case .Percent: calc.percentage(); displayLabel.flash()
         case .Equal: calc.enterEqual(); displayLabel.flash()
-        case .Decimal: calc.enterDecimal()
+        case .Decimal: calc.enterDecimal(); displayLabel.flash()
+        case .Back: calc.enterBackSign(); displayLabel.flash()
         default: return
         }
         
-        //print(type.rawValue)
         updateDisplayLabel()
         updateClearButtonTitle()
     }
@@ -99,6 +100,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Autoshrink the longer button titles
+        clearButton.titleLabel?.baselineAdjustment = .alignCenters
+        clearButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        clearButton.titleLabel?.minimumScaleFactor = 0.2
         
         //Google Mobile Ads configuration.  Ad id is specific to this app and ad
         //print("Google Mobile Ads SDK version: " + GADRequest.sdkVersion())
@@ -127,7 +133,8 @@ class ViewController: UIViewController {
             keyPress(input: "C", title: "clear", button: clearButton),
             keyPress(input: UIKeyInputEscape, title: "clear", button: clearButton),
             keyPress(input: "%", title: "percentage sign", button: percentageButton),
-            keyPress(input: ".", title: "decimal point", button: decimalButton)
+            keyPress(input: ".", title: "decimal point", button: decimalButton),
+            keyPress(input: "\u{8}", title: "delete", button: backButton)
         ]
         
         //Load UIKeyCommand array

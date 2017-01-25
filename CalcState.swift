@@ -146,6 +146,11 @@ struct CalcState {
         display.fraction = true
     }
     
+    mutating func enterBackSign() {
+        toMode(.entry)
+        display.removeDigit()
+    }
+    
     mutating func swapSign() {
         clearState = .clear
         switch mode {

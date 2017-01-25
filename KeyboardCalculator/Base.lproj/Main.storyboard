@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad12_9" orientation="portrait">
+    <device id="ipad12_9" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,17 +19,17 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="R0l-ej-hjI" customClass="DisplayView" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="12" y="20" width="1000" height="261"/>
+                                <rect key="frame" x="12" y="20" width="1342" height="189"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="150"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w93-Gf-IF8" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="880.5" width="253" height="195.5"/>
+                                <rect key="frame" x="0.0" y="646.5" width="338.5" height="141.5"/>
                                 <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                 <state key="normal" title="1">
@@ -41,8 +41,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9m-xy-l65" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="771" y="880.5" width="253" height="195.5"/>
-                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="1027.5" y="646.5" width="338.5" height="141.5"/>
+                                <color key="backgroundColor" red="0.76470588235294112" green="0.19215686274509802" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                                 <state key="normal" title="+">
@@ -53,8 +53,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yro-d0-jvQ" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="771" y="680.5" width="253" height="196"/>
-                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="1027.5" y="500.5" width="338.5" height="142"/>
+                                <color key="backgroundColor" red="0.76470588235294112" green="0.19215686274509802" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                 <state key="normal" title="-">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -64,8 +64,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EA9-Ae-QXm" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="771" y="480.5" width="253" height="196"/>
-                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="1027.5" y="354.5" width="338.5" height="142"/>
+                                <color key="backgroundColor" red="0.76470588235294112" green="0.19215686274509802" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                 <state key="normal" title="x">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -76,8 +76,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lu5-e7-0lj" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="771" y="281" width="253" height="195.5"/>
-                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="1027.5" y="209" width="338.5" height="141.5"/>
+                                <color key="backgroundColor" red="0.76470588235294112" green="0.19215686274509802" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                 <state key="normal" title="÷">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -87,8 +87,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6t-pJ-c7O" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="771" y="1080" width="253" height="196"/>
-                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="1027.5" y="792" width="338.5" height="142"/>
+                                <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                 <state key="normal" title="=">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -98,7 +98,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HoI-Kx-E7c" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="514" y="1080" width="253" height="196"/>
+                                <rect key="frame" x="685" y="792" width="338.5" height="142"/>
                                 <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                 <state key="normal" title=".">
@@ -109,10 +109,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bii-Gc-oti" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="257" y="281" width="253" height="195.5"/>
-                                <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="342.5" y="209" width="338.5" height="141.5"/>
+                                <color key="backgroundColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
-                                <state key="normal" title="±">
+                                <state key="normal" title="%">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -120,10 +120,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPU-On-dnN" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="514" y="281" width="253" height="195.5"/>
-                                <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="685" y="209" width="338.5" height="141.5"/>
+                                <color key="backgroundColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
-                                <state key="normal" title="%">
+                                <state key="normal" title="←">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -131,7 +131,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N6s-Dm-X2q" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="257" y="880.5" width="253" height="195.5"/>
+                                <rect key="frame" x="342.5" y="646.5" width="338.5" height="141.5"/>
                                 <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                 <state key="normal" title="2">
@@ -142,7 +142,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uG6-88-GhF" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="514" y="880.5" width="253" height="195.5"/>
+                                <rect key="frame" x="685" y="646.5" width="338.5" height="141.5"/>
                                 <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                 <state key="normal" title="3">
@@ -153,7 +153,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZY9-aD-FHw" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="480.5" width="253" height="196"/>
+                                <rect key="frame" x="0.0" y="354.5" width="338.5" height="142"/>
                                 <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                 <state key="normal" title="7">
@@ -164,7 +164,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tyd-QO-twc" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="257" y="480.5" width="253" height="196"/>
+                                <rect key="frame" x="342.5" y="354.5" width="338.5" height="142"/>
                                 <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                 <state key="normal" title="8">
@@ -176,7 +176,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGK-xt-pgM" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="514" y="480.5" width="253" height="196"/>
+                                <rect key="frame" x="685" y="354.5" width="338.5" height="142"/>
                                 <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                 <state key="normal" title="9">
@@ -187,7 +187,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAq-Ly-QJU" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="680.5" width="253" height="196"/>
+                                <rect key="frame" x="0.0" y="500.5" width="338.5" height="142"/>
                                 <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                 <state key="normal" title="4">
@@ -198,7 +198,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Djl-j5-Yl5" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="257" y="680.5" width="253" height="196"/>
+                                <rect key="frame" x="342.5" y="500.5" width="338.5" height="142"/>
                                 <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                 <state key="normal" title="5">
@@ -209,7 +209,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tyc-Us-6d9" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="514" y="680.5" width="253" height="196"/>
+                                <rect key="frame" x="685" y="500.5" width="338.5" height="142"/>
                                 <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                 <state key="normal" title="6">
@@ -220,25 +220,25 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihg-Qo-dv5" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="281" width="253" height="195.5"/>
-                                <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="209" width="338.5" height="141.5"/>
+                                <color key="backgroundColor" red="0.76470588235294112" green="0.19215686274509802" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                 <state key="normal" title="AC">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="clearButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Oxc-QC-ueq"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J45-st-wff" customClass="GADBannerView">
-                                <rect key="frame" x="0.0" y="1276" width="1024" height="90"/>
+                                <rect key="frame" x="0.0" y="934" width="1366" height="90"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="fcl-SD-Sjg"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JC2-za-pgz" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1080" width="510" height="196"/>
+                                <rect key="frame" x="342.5" y="792" width="338.5" height="142"/>
                                 <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                 <state key="normal" title="0">
@@ -248,30 +248,45 @@
                                     <action selector="press:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LUW-9C-iPH"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xsg-GZ-1Gw" customClass="CalcButton" customModule="KeyboardCalculator" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="792" width="338.5" height="142"/>
+                                <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="72"/>
+                                <state key="normal" title="±">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="highlighted" title="1"/>
+                                <connections>
+                                    <action selector="press:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2PS-4f-oI0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="HoI-Kx-E7c" firstAttribute="leading" secondItem="mPU-On-dnN" secondAttribute="leading" id="08K-3K-hxq"/>
                             <constraint firstItem="Djl-j5-Yl5" firstAttribute="top" secondItem="EAq-Ly-QJU" secondAttribute="top" id="0Ap-Ii-PoQ"/>
                             <constraint firstItem="mPU-On-dnN" firstAttribute="width" secondItem="ihg-Qo-dv5" secondAttribute="width" id="0G3-Ik-Ktq"/>
                             <constraint firstItem="lu5-e7-0lj" firstAttribute="leading" secondItem="mPU-On-dnN" secondAttribute="trailing" constant="4" id="0nu-W3-rWQ"/>
                             <constraint firstItem="ihg-Qo-dv5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0ue-hn-0OQ"/>
-                            <constraint firstItem="a6t-pJ-c7O" firstAttribute="leading" secondItem="lu5-e7-0lj" secondAttribute="leading" id="20m-G7-Y8L"/>
-                            <constraint firstItem="JC2-za-pgz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2bB-mx-xsM"/>
+                            <constraint firstItem="HoI-Kx-E7c" firstAttribute="trailing" secondItem="mPU-On-dnN" secondAttribute="trailing" id="2qf-rB-vSa"/>
                             <constraint firstItem="yro-d0-jvQ" firstAttribute="top" secondItem="EAq-Ly-QJU" secondAttribute="top" id="38K-yj-n5e"/>
                             <constraint firstAttribute="trailing" secondItem="yro-d0-jvQ" secondAttribute="trailing" id="4QK-gp-VoN"/>
                             <constraint firstItem="Djl-j5-Yl5" firstAttribute="leading" secondItem="Bii-Gc-oti" secondAttribute="leading" id="57g-am-F72"/>
+                            <constraint firstItem="Xsg-GZ-1Gw" firstAttribute="trailing" secondItem="ihg-Qo-dv5" secondAttribute="trailing" id="5UU-Cj-Oyz"/>
                             <constraint firstItem="R0l-ej-hjI" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="5XA-Gf-65l"/>
+                            <constraint firstItem="a6t-pJ-c7O" firstAttribute="leading" secondItem="lu5-e7-0lj" secondAttribute="leading" id="60I-Mi-9DE"/>
                             <constraint firstItem="Djl-j5-Yl5" firstAttribute="bottom" secondItem="EAq-Ly-QJU" secondAttribute="bottom" id="7L9-yn-Unt"/>
                             <constraint firstItem="w93-Gf-IF8" firstAttribute="top" secondItem="EAq-Ly-QJU" secondAttribute="bottom" constant="4" id="7QB-z6-U2w"/>
                             <constraint firstItem="UGK-xt-pgM" firstAttribute="trailing" secondItem="mPU-On-dnN" secondAttribute="trailing" id="7Rf-b2-LNp"/>
                             <constraint firstItem="r9m-xy-l65" firstAttribute="top" secondItem="w93-Gf-IF8" secondAttribute="top" id="7fP-nB-7Tr"/>
+                            <constraint firstItem="Xsg-GZ-1Gw" firstAttribute="leading" secondItem="ihg-Qo-dv5" secondAttribute="leading" id="7ph-Qn-zY8"/>
                             <constraint firstItem="EA9-Ae-QXm" firstAttribute="top" secondItem="ZY9-aD-FHw" secondAttribute="top" id="8ER-TU-ddy"/>
                             <constraint firstItem="w93-Gf-IF8" firstAttribute="trailing" secondItem="ihg-Qo-dv5" secondAttribute="trailing" id="9CS-Xd-0av"/>
                             <constraint firstItem="Bii-Gc-oti" firstAttribute="bottom" secondItem="ihg-Qo-dv5" secondAttribute="bottom" id="ABO-yI-Q8q"/>
                             <constraint firstItem="EA9-Ae-QXm" firstAttribute="trailing" secondItem="lu5-e7-0lj" secondAttribute="trailing" id="BRv-oQ-oUM"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="J45-st-wff" secondAttribute="bottom" id="BbQ-ne-g4B"/>
                             <constraint firstItem="mPU-On-dnN" firstAttribute="leading" secondItem="Bii-Gc-oti" secondAttribute="trailing" constant="4" id="CbA-gS-eKR"/>
-                            <constraint firstItem="HoI-Kx-E7c" firstAttribute="leading" secondItem="mPU-On-dnN" secondAttribute="leading" id="Dw3-9P-TqH"/>
+                            <constraint firstItem="JC2-za-pgz" firstAttribute="top" secondItem="Xsg-GZ-1Gw" secondAttribute="top" id="DhY-jt-RVu"/>
                             <constraint firstAttribute="trailing" secondItem="EA9-Ae-QXm" secondAttribute="trailing" id="EE8-Ot-Q87"/>
                             <constraint firstItem="Bii-Gc-oti" firstAttribute="top" secondItem="ihg-Qo-dv5" secondAttribute="top" id="EoD-59-ahL"/>
                             <constraint firstItem="Tyc-Us-6d9" firstAttribute="bottom" secondItem="EAq-Ly-QJU" secondAttribute="bottom" id="F9W-BG-9MR"/>
@@ -280,7 +295,6 @@
                             <constraint firstItem="Djl-j5-Yl5" firstAttribute="trailing" secondItem="Bii-Gc-oti" secondAttribute="trailing" id="Gup-Cw-R7Z"/>
                             <constraint firstItem="mPU-On-dnN" firstAttribute="top" secondItem="ihg-Qo-dv5" secondAttribute="top" id="HzP-bD-bUX"/>
                             <constraint firstItem="R0l-ej-hjI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="12" id="ISS-wr-8Wl"/>
-                            <constraint firstItem="JC2-za-pgz" firstAttribute="trailing" secondItem="N6s-Dm-X2q" secondAttribute="trailing" id="J17-O0-TUZ"/>
                             <constraint firstItem="ihg-Qo-dv5" firstAttribute="top" secondItem="R0l-ej-hjI" secondAttribute="bottom" id="J4S-hu-y2A"/>
                             <constraint firstItem="w93-Gf-IF8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Jet-Lc-wTq"/>
                             <constraint firstItem="ZY9-aD-FHw" firstAttribute="top" secondItem="ihg-Qo-dv5" secondAttribute="bottom" constant="4" id="Jlb-2P-hq9"/>
@@ -316,7 +330,6 @@
                             <constraint firstItem="yro-d0-jvQ" firstAttribute="trailing" secondItem="lu5-e7-0lj" secondAttribute="trailing" id="fnH-zW-ViY"/>
                             <constraint firstItem="EAq-Ly-QJU" firstAttribute="height" secondItem="ihg-Qo-dv5" secondAttribute="height" id="g5z-hv-uwc"/>
                             <constraint firstAttribute="trailing" secondItem="lu5-e7-0lj" secondAttribute="trailing" id="gLm-Xl-PGW"/>
-                            <constraint firstItem="HoI-Kx-E7c" firstAttribute="trailing" secondItem="mPU-On-dnN" secondAttribute="trailing" id="gS7-NK-Qrv"/>
                             <constraint firstItem="EA9-Ae-QXm" firstAttribute="leading" secondItem="lu5-e7-0lj" secondAttribute="leading" id="gXc-1g-0Ef"/>
                             <constraint firstItem="N6s-Dm-X2q" firstAttribute="leading" secondItem="Bii-Gc-oti" secondAttribute="leading" id="gbm-4b-ziV"/>
                             <constraint firstItem="EAq-Ly-QJU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ggf-DS-TpA"/>
@@ -333,9 +346,12 @@
                             <constraint firstItem="w93-Gf-IF8" firstAttribute="height" secondItem="ihg-Qo-dv5" secondAttribute="height" id="ncg-h9-psy"/>
                             <constraint firstAttribute="trailing" secondItem="J45-st-wff" secondAttribute="trailing" id="nfF-L8-ePT"/>
                             <constraint firstItem="uG6-88-GhF" firstAttribute="leading" secondItem="mPU-On-dnN" secondAttribute="leading" id="odl-bp-ODH"/>
+                            <constraint firstItem="JC2-za-pgz" firstAttribute="leading" secondItem="Bii-Gc-oti" secondAttribute="leading" id="plq-zE-xck"/>
                             <constraint firstItem="J45-st-wff" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pzZ-na-7oZ"/>
                             <constraint firstItem="r9m-xy-l65" firstAttribute="bottom" secondItem="w93-Gf-IF8" secondAttribute="bottom" id="qfs-r7-2hR"/>
                             <constraint firstItem="Tyc-Us-6d9" firstAttribute="leading" secondItem="mPU-On-dnN" secondAttribute="leading" id="rle-pl-ErO"/>
+                            <constraint firstItem="JC2-za-pgz" firstAttribute="bottom" secondItem="Xsg-GZ-1Gw" secondAttribute="bottom" id="tkP-2O-k8g"/>
+                            <constraint firstItem="JC2-za-pgz" firstAttribute="trailing" secondItem="Bii-Gc-oti" secondAttribute="trailing" id="uSH-tN-2RX"/>
                             <constraint firstItem="Tyc-Us-6d9" firstAttribute="top" secondItem="EAq-Ly-QJU" secondAttribute="top" id="xLw-Ao-bFe"/>
                             <constraint firstItem="EAq-Ly-QJU" firstAttribute="top" secondItem="ZY9-aD-FHw" secondAttribute="bottom" constant="4" id="xMO-XW-NPI"/>
                             <constraint firstAttribute="trailing" secondItem="lu5-e7-0lj" secondAttribute="trailing" id="yMD-9U-kaN"/>
@@ -343,6 +359,7 @@
                     </view>
                     <connections>
                         <outlet property="DisplayLabel" destination="R0l-ej-hjI" id="dd2-5N-KqY"/>
+                        <outlet property="backButton" destination="mPU-On-dnN" id="Yg2-EX-Tf2"/>
                         <outlet property="bannerView" destination="J45-st-wff" id="KFm-ka-yG9"/>
                         <outlet property="clearButton" destination="ihg-Qo-dv5" id="C5y-XJ-DsB"/>
                         <outlet property="decimalButton" destination="HoI-Kx-E7c" id="oiC-VC-jdG"/>
@@ -355,10 +372,10 @@
                         <outlet property="multiplyButton" destination="EA9-Ae-QXm" id="YB5-5A-cCR"/>
                         <outlet property="nineButton" destination="UGK-xt-pgM" id="LWL-Iz-X1i"/>
                         <outlet property="oneButton" destination="w93-Gf-IF8" id="LWe-wO-qQg"/>
-                        <outlet property="percentageButton" destination="mPU-On-dnN" id="ikO-a9-CYQ"/>
+                        <outlet property="percentageButton" destination="Bii-Gc-oti" id="SVD-yy-V7J"/>
                         <outlet property="plusButton" destination="r9m-xy-l65" id="iwa-hW-Z3F"/>
                         <outlet property="sevenButton" destination="ZY9-aD-FHw" id="Sh7-ee-EaE"/>
-                        <outlet property="signButton" destination="Bii-Gc-oti" id="Kms-CM-k4K"/>
+                        <outlet property="signButton" destination="Xsg-GZ-1Gw" id="NDN-EI-qKE"/>
                         <outlet property="sixButton" destination="Tyc-Us-6d9" id="BxS-ys-U11"/>
                         <outlet property="threeButton" destination="uG6-88-GhF" id="HTK-DM-5kf"/>
                         <outlet property="twoButton" destination="N6s-Dm-X2q" id="0lF-O6-z6I"/>

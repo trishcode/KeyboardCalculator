@@ -36,22 +36,47 @@ struct CalcDisplay {
     }
     
     //Formatted for display
+    
     var description : String {
-        if decimalValue > 1000000000 {
+        if decimalValue < -1000000000 || decimalValue > 1000000000 {
             if let formattedValue = scientificFormatter.string(from: NSNumber(value: decimalValue)) {
                 return formattedValue
             } else {
                 return "0"
             }
         } else {
-            if let formattedValue = decimalFormatter.string(from: NSNumber(value: decimalValue)) {
-                return formattedValue
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            if fraction {       //this accounts for 2.03 case
+                numberFormatter.minimumFractionDigits = Int(exponent + 1)
+                if let formattedValue = numberFormatter.string(from: NSNumber(value:decimalValue)) {
+                    let truncated = formattedValue.substring(to: formattedValue.index(before: formattedValue.endIndex))
+                    return truncated
+                } else {
+                    return "0"
+                }
             } else {
-                return "0"
+                if let formattedValue = numberFormatter.string(from: NSNumber(value:decimalValue)) {
+                    return formattedValue
+                } else {
+                    return "0"
+                }
             }
         }
     }
     
+    mutating func removeDigit() {
+        if fraction == true && exponent == 0 {  //last press was Decimal
+            fraction = false
+        } else {
+            number /= 10
+            if fraction {
+                exponent -= 1
+            }
+        }
+    }
+    
+    //When I type a zero after the decimal point, it doesn't display on the screen.
     mutating func appendDigit(_ digit: UInt) {
         number *= 10
         number += digit
