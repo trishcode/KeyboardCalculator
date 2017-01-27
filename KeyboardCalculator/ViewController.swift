@@ -112,7 +112,7 @@ class ViewController: UIViewController {
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         
-        //Load array for keyboard commands.
+        //Load array for keyboard commands
         keyPressArray = [
             keyPress(input: "1", title: "number 1", button: oneButton),
             keyPress(input: "2", title: "number 2", button: twoButton),
