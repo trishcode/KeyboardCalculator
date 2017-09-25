@@ -50,7 +50,7 @@ struct CalcDisplay {
             if fraction {       //this accounts for 2.03 case
                 numberFormatter.minimumFractionDigits = Int(exponent + 1)
                 if let formattedValue = numberFormatter.string(from: NSNumber(value:decimalValue)) {
-                    let truncated = formattedValue.substring(to: formattedValue.index(before: formattedValue.endIndex))
+                    let truncated = String(formattedValue[..<formattedValue.index(before: formattedValue.endIndex)])
                     return truncated
                 } else {
                     return "0"

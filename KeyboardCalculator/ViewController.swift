@@ -110,8 +110,10 @@ class ViewController: UIViewController {
         //print("Google Mobile Ads SDK version: " + GADRequest.sdkVersion())
         bannerView.adUnitID = "ca-app-pub-5593562904789382/8592782157"   
         bannerView.rootViewController = self
+        let adSize = CGSize(width: bannerView.frame.size.width, height: 90)
+        bannerView.adSize = GADAdSize(size: adSize, flags: 0)
         bannerView.load(GADRequest())
-        
+    
         //Load array for keyboard commands
         keyPressArray = [
             keyPress(input: "1", title: "number 1", button: oneButton),
@@ -149,7 +151,7 @@ class ViewController: UIViewController {
     }
     
     //The following function replicates key presses from the UI from the keyboard
-    func UIKeyReplication(sender: UIKeyCommand) {
+    @objc func UIKeyReplication(sender: UIKeyCommand) {
         //Find the key that matches .input in the array, and get the corresponding .button.
         for i in 0 ... (keyPressArray.count-1) {
             if sender.input == keyPressArray[i].input {

@@ -4,6 +4,14 @@
       "idiom" : "universal",
       "filename" : "calculator-icon_128x128.png",
       "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
