@@ -20,6 +20,9 @@
 		25D6C84E1E26D3E9001D3C91 /* KeyboardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D6C84D1E26D3E9001D3C91 /* KeyboardCommand.swift */; };
 		25D6C8521E284F12001D3C91 /* CalcStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D6C8511E284F12001D3C91 /* CalcStack.swift */; };
 		25D744C21E294BAD008A5608 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D744C11E294BAD008A5608 /* DisplayView.swift */; };
+		41825C8DB94372C06A386138 /* Pods_KeyboardCalculatorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED4D9DBF7AFCA8326CEB75 /* Pods_KeyboardCalculatorUITests.framework */; };
+		70CFA56C34531DB15BC91384 /* Pods_KeyboardCalculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E36A3730050CFCFDD83FA8 /* Pods_KeyboardCalculator.framework */; };
+		C95CA33CE66B7D03E75A1165 /* Pods_KeyboardCalculatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7665EFE03C59342BC868BB54 /* Pods_KeyboardCalculatorTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		0F079E4A883BD42D12C64F4F /* Pods-KeyboardCalculatorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyboardCalculatorUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeyboardCalculatorUITests/Pods-KeyboardCalculatorUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		20ED4D9DBF7AFCA8326CEB75 /* Pods_KeyboardCalculatorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyboardCalculatorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		259F3D711E255F8600C50FAC /* KeyboardCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyboardCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		259F3D741E255F8600C50FAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		259F3D761E255F8600C50FAC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,14 +60,16 @@
 		259F3D961E255F8700C50FAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		259F3DA21E255FD600C50FAC /* CalcDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcDisplay.swift; sourceTree = "<group>"; };
 		259F3DA61E2560EF00C50FAC /* CalcButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcButton.swift; sourceTree = "<group>"; };
-		25BF68191F79849700B69FA2 /* CalcState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalcState.swift; path = "/Users/trudloff/Library/Mobile Documents/com~apple~CloudDocs/Apps/KeyboardCalculator/KeyboardCalculator/CalcState.swift"; sourceTree = "<absolute>"; };
+		25BF68191F79849700B69FA2 /* CalcState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcState.swift; sourceTree = "<group>"; };
 		25D6C84D1E26D3E9001D3C91 /* KeyboardCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardCommand.swift; sourceTree = "<group>"; };
 		25D6C8511E284F12001D3C91 /* CalcStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcStack.swift; sourceTree = "<group>"; };
 		25D744C11E294BAD008A5608 /* DisplayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
 		59FAA93D471F7CC3DCC61DC6 /* Pods-KeyboardCalculatorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyboardCalculatorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeyboardCalculatorTests/Pods-KeyboardCalculatorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7665EFE03C59342BC868BB54 /* Pods_KeyboardCalculatorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyboardCalculatorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86D1C19577269CAC75AADDA3 /* Pods-KeyboardCalculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyboardCalculator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeyboardCalculator/Pods-KeyboardCalculator.debug.xcconfig"; sourceTree = "<group>"; };
 		8F4CD1F478681D66FCC5F6FF /* Pods-KeyboardCalculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyboardCalculator.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyboardCalculator/Pods-KeyboardCalculator.release.xcconfig"; sourceTree = "<group>"; };
 		D58AF23BB53A170F0625C03C /* Pods-KeyboardCalculatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyboardCalculatorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyboardCalculatorTests/Pods-KeyboardCalculatorTests.release.xcconfig"; sourceTree = "<group>"; };
+		D7E36A3730050CFCFDD83FA8 /* Pods_KeyboardCalculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyboardCalculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E564C8917334052F9B871A /* Pods-KeyboardCalculatorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyboardCalculatorUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyboardCalculatorUITests/Pods-KeyboardCalculatorUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70CFA56C34531DB15BC91384 /* Pods_KeyboardCalculator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C95CA33CE66B7D03E75A1165 /* Pods_KeyboardCalculatorTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41825C8DB94372C06A386138 /* Pods_KeyboardCalculatorUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +109,7 @@
 				259F3D931E255F8700C50FAC /* KeyboardCalculatorUITests */,
 				259F3D721E255F8600C50FAC /* Products */,
 				FA635B7A852BAF9235037F3F /* Pods */,
+				878355C5A82D47E2C995F3E5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,6 +160,16 @@
 			path = KeyboardCalculatorUITests;
 			sourceTree = "<group>";
 		};
+		878355C5A82D47E2C995F3E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D7E36A3730050CFCFDD83FA8 /* Pods_KeyboardCalculator.framework */,
+				7665EFE03C59342BC868BB54 /* Pods_KeyboardCalculatorTests.framework */,
+				20ED4D9DBF7AFCA8326CEB75 /* Pods_KeyboardCalculatorUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FA635B7A852BAF9235037F3F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,7 +195,6 @@
 				259F3D6E1E255F8600C50FAC /* Frameworks */,
 				259F3D6F1E255F8600C50FAC /* Resources */,
 				A9787777A8580B531CE1E2BD /* [CP] Embed Pods Frameworks */,
-				104400FA460E8D9FB34CBD4D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -194,8 +213,6 @@
 				259F3D811E255F8600C50FAC /* Sources */,
 				259F3D821E255F8600C50FAC /* Frameworks */,
 				259F3D831E255F8600C50FAC /* Resources */,
-				C4FD38125FAB38201B2FF2E8 /* [CP] Embed Pods Frameworks */,
-				1E76635BB692C3D693BDD4FB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -215,8 +232,6 @@
 				259F3D8C1E255F8600C50FAC /* Sources */,
 				259F3D8D1E255F8600C50FAC /* Frameworks */,
 				259F3D8E1E255F8600C50FAC /* Resources */,
-				B993F6285CBD433A2878EABA /* [CP] Embed Pods Frameworks */,
-				029638561FEE6B988C79041F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -235,24 +250,24 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1330;
 				ORGANIZATIONNAME = TrishCode;
 				TargetAttributes = {
 					259F3D701E255F8600C50FAC = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = CLTYD6RLE7;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1330;
 						ProvisioningStyle = Automatic;
 					};
 					259F3D841E255F8600C50FAC = {
 						CreatedOnToolsVersion = 8.2.1;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1330;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 259F3D701E255F8600C50FAC;
 					};
 					259F3D8F1E255F8600C50FAC = {
 						CreatedOnToolsVersion = 8.2.1;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1330;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 259F3D701E255F8600C50FAC;
 					};
@@ -260,7 +275,7 @@
 			};
 			buildConfigurationList = 259F3D6C1E255F8600C50FAC /* Build configuration list for PBXProject "KeyboardCalculator" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -306,64 +321,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		029638561FEE6B988C79041F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeyboardCalculatorUITests/Pods-KeyboardCalculatorUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		104400FA460E8D9FB34CBD4D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeyboardCalculator/Pods-KeyboardCalculator-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1E76635BB692C3D693BDD4FB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeyboardCalculatorTests/Pods-KeyboardCalculatorTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		27E1E713AEE3811DFBDF4C72 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KeyboardCalculatorUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A9787777A8580B531CE1E2BD /* [CP] Embed Pods Frameworks */ = {
@@ -372,43 +345,20 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KeyboardCalculator/Pods-KeyboardCalculator-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeyboardCalculator/Pods-KeyboardCalculator-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B993F6285CBD433A2878EABA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeyboardCalculatorUITests/Pods-KeyboardCalculatorUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C4FD38125FAB38201B2FF2E8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeyboardCalculatorTests/Pods-KeyboardCalculatorTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KeyboardCalculator/Pods-KeyboardCalculator-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CA4102CA6A7C7B7613ACCFF5 /* [CP] Check Pods Manifest.lock */ = {
@@ -417,13 +367,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KeyboardCalculator-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F434A97D8B9C927F69BC6C05 /* [CP] Check Pods Manifest.lock */ = {
@@ -432,13 +385,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KeyboardCalculatorTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -523,6 +479,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -530,8 +487,10 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -556,7 +515,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -579,6 +538,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -586,8 +546,10 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -606,7 +568,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -621,18 +583,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 2.0.0;
 				DEVELOPMENT_TEAM = CLTYD6RLE7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/KeyboardCalculator",
 				);
 				INFOPLIST_FILE = KeyboardCalculator/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.trishcode.KeyboardCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -642,18 +606,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 2.0.0;
 				DEVELOPMENT_TEAM = CLTYD6RLE7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/KeyboardCalculator",
 				);
 				INFOPLIST_FILE = KeyboardCalculator/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.trishcode.KeyboardCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -668,7 +634,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.trishcode.KeyboardCalculatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeyboardCalculator.app/KeyboardCalculator";
 			};
 			name = Debug;
@@ -684,7 +650,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.trishcode.KeyboardCalculatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeyboardCalculator.app/KeyboardCalculator";
 			};
 			name = Release;
@@ -699,7 +665,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.trishcode.KeyboardCalculatorUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = KeyboardCalculator;
 			};
 			name = Debug;
@@ -714,7 +680,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.trishcode.KeyboardCalculatorUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = KeyboardCalculator;
 			};
 			name = Release;

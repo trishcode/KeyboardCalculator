@@ -1,5 +1,5 @@
 
- platform :ios, ’11.0’
+ platform :ios, ’15.4’
 
 target 'KeyboardCalculator' do
   use_frameworks!

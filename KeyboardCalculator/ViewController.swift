@@ -107,11 +107,11 @@ class ViewController: UIViewController {
         clearButton.titleLabel?.minimumScaleFactor = 0.2
         
         //Google Mobile Ads configuration.  Ad id is specific to this app and ad
-        //print("Google Mobile Ads SDK version: " + GADRequest.sdkVersion())
+        print("Google Mobile Ads SDK version: \(GADMobileAds.sharedInstance().sdkVersion)")
         bannerView.adUnitID = "ca-app-pub-5593562904789382/8592782157"   
         bannerView.rootViewController = self
-        let adSize = CGSize(width: bannerView.frame.size.width, height: 90)
-        bannerView.adSize = GADAdSize(size: adSize, flags: 0)
+//        let adSize = CGSize(width: bannerView.frame.size.width, height: 90)
+//        bannerView.adSize = GADAdSize(size: adSize, flags: 0)
         bannerView.load(GADRequest())
     
         //Load array for keyboard commands
@@ -133,7 +133,7 @@ class ViewController: UIViewController {
             keyPress(input: "=", title: "equals", button: equalButton),
             keyPress(input: "\r", title: "equals", button: equalButton),
             keyPress(input: "C", title: "clear", button: clearButton),
-            keyPress(input: UIKeyInputEscape, title: "clear", button: clearButton),
+            keyPress(input: UIKeyCommand.inputEscape, title: "clear", button: clearButton),
             keyPress(input: "%", title: "percentage sign", button: percentageButton),
             keyPress(input: ".", title: "decimal point", button: decimalButton),
             keyPress(input: "\u{8}", title: "delete", button: backButton)
@@ -141,7 +141,7 @@ class ViewController: UIViewController {
         
         //Load UIKeyCommand array
         for key in keyPressArray {
-            keyCommandArray.append(UIKeyCommand(input: key.input, modifierFlags: [], action: #selector(UIKeyReplication), discoverabilityTitle: key.title))
+            keyCommandArray.append(UIKeyCommand(input: key.input, modifierFlags: [], action: #selector(UIKeyReplication)))
         }
     }
     
